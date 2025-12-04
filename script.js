@@ -4155,3 +4155,228 @@ initNewScenes = function(sceneNum) {
     originalInitNewScenes(sceneNum);
     if (sceneNum === 16) initScene16();
 };
+
+
+// ========================================
+// SCENE 17: 100 REASONS WHY YOU'RE SPECIAL
+// ========================================
+
+// Make reasons globally accessible for debugging
+window.reasons = [
+    { emoji: "😊", text: "Tumhari muskurahat duniya ki sabse khoobsurat cheez hai" },
+    { emoji: "✨", text: "Tumhari aankhon mein ek alag hi chamak hai" },
+    { emoji: "💕", text: "Tumhari baatein mere dil ko sukoon deti hain" },
+    { emoji: "🌟", text: "Tumhari personality bohot attractive hai" },
+    { emoji: "💫", text: "Tumhari hansi meri favorite awaaz hai" },
+    { emoji: "🌸", text: "Tumhari simplicity tumhe aur bhi khoobsurat banati hai" },
+    { emoji: "💝", text: "Tumhari care mujhe special feel karati hai" },
+    { emoji: "🎀", text: "Tumhari sharmana bohot cute hai" },
+    { emoji: "🌺", text: "Tumhari samajhdari mujhe impress karti hai" },
+    { emoji: "💗", text: "Tum exactly waise ho jaise main chahta tha" },
+    { emoji: "🌹", text: "Tumhari awaaz bohot pyari hai" },
+    { emoji: "✨", text: "Tumhare saath waqt kaise guzar jata hai pata nahi chalta" },
+    { emoji: "💖", text: "Tum jab baat karti ho, duniya ruk jaati hai" },
+    { emoji: "🌟", text: "Tumhari presence se mahol khushgawar ho jata hai" },
+    { emoji: "💕", text: "Tumhare bina din adhura lagta hai" },
+    { emoji: "🎵", text: "Tumhari hansi infectious hai" },
+    { emoji: "💫", text: "Tumhari khushi mein meri khushi hai" },
+    { emoji: "🌸", text: "Tum mere dil ki dhadkan ho" },
+    { emoji: "✨", text: "Tumhare saath zindagi perfect hai" },
+    { emoji: "💝", text: "Tumhari muskurahat meri subah hai" },
+    { emoji: "🌺", text: "Tumhari baatein meri shaam ki chai hain" },
+    { emoji: "💗", text: "Tumhari aankhon mein kho jana chahta hoon" },
+    { emoji: "🌟", text: "Tumhari smile dekh kar din ban jata hai" },
+    { emoji: "💕", text: "Tumhari ek nazar sab kuch badal deti hai" },
+    { emoji: "✨", text: "Tumhare saath har pal khaas lagta hai" },
+    { emoji: "💖", text: "Tumhari understanding bohot achi hai" },
+    { emoji: "🌸", text: "Tumhari nature bohot sweet hai" },
+    { emoji: "💫", text: "Tumhare saath baat karna bohot acha lagta hai" },
+    { emoji: "🎀", text: "Tumhari style unique hai" },
+    { emoji: "💝", text: "Tumhari thinking positive hai" },
+    { emoji: "🌹", text: "Tumhari energy contagious hai" },
+    { emoji: "✨", text: "Tumhara sense of humor amazing hai" },
+    { emoji: "💗", text: "Tumhari loyalty inspiring hai" },
+    { emoji: "🌟", text: "Tumhari honesty refreshing hai" },
+    { emoji: "💕", text: "Tumhari kindness touching hai" },
+    { emoji: "🌺", text: "Tumhari patience admirable hai" },
+    { emoji: "💖", text: "Tumhari intelligence attractive hai" },
+    { emoji: "✨", text: "Tumhari confidence beautiful hai" },
+    { emoji: "💫", text: "Tumhari humility rare hai" },
+    { emoji: "🌸", text: "Tumhari grace elegant hai" },
+    { emoji: "💝", text: "Tumhari warmth comforting hai" },
+    { emoji: "🎵", text: "Tumhari voice soothing hai" },
+    { emoji: "💗", text: "Tumhari eyes expressive hain" },
+    { emoji: "🌟", text: "Tumhari smile infectious hai" },
+    { emoji: "💕", text: "Tumhari laugh joyful hai" },
+    { emoji: "✨", text: "Tumhari presence calming hai" },
+    { emoji: "🌹", text: "Tumhari aura positive hai" },
+    { emoji: "💖", text: "Tumhari vibe amazing hai" },
+    { emoji: "💫", text: "Tumhari spirit strong hai" },
+    { emoji: "🌺", text: "Tumhari heart pure hai" },
+    { emoji: "💝", text: "Tum bohot caring ho" },
+    { emoji: "✨", text: "Tum bohot thoughtful ho" },
+    { emoji: "💗", text: "Tum bohot genuine ho" },
+    { emoji: "🌸", text: "Tum bohot real ho" },
+    { emoji: "💕", text: "Tum bohot authentic ho" },
+    { emoji: "🌟", text: "Tum bohot trustworthy ho" },
+    { emoji: "💖", text: "Tum bohot reliable ho" },
+    { emoji: "💫", text: "Tum bohot supportive ho" },
+    { emoji: "🎀", text: "Tum bohot understanding ho" },
+    { emoji: "💝", text: "Tum bohot compassionate ho" },
+    { emoji: "🌹", text: "Tum bohot empathetic ho" },
+    { emoji: "✨", text: "Tum bohot sensitive ho (in a good way)" },
+    { emoji: "💗", text: "Tum bohot mature ho" },
+    { emoji: "🌺", text: "Tum bohot wise ho" },
+    { emoji: "💕", text: "Tum bohot smart ho" },
+    { emoji: "🌟", text: "Tum bohot clever ho" },
+    { emoji: "💖", text: "Tum bohot creative ho" },
+    { emoji: "💫", text: "Tum bohot talented ho" },
+    { emoji: "🌸", text: "Tum bohot skilled ho" },
+    { emoji: "💝", text: "Tum bohot capable ho" },
+    { emoji: "✨", text: "Tum bohot strong ho" },
+    { emoji: "💗", text: "Tum bohot brave ho" },
+    { emoji: "🎵", text: "Tum bohot courageous ho" },
+    { emoji: "💕", text: "Tum bohot determined ho" },
+    { emoji: "🌟", text: "Tum bohot focused ho" },
+    { emoji: "💖", text: "Tum bohot ambitious ho" },
+    { emoji: "💫", text: "Tum bohot driven ho" },
+    { emoji: "🌹", text: "Tum bohot passionate ho" },
+    { emoji: "💝", text: "Tum bohot dedicated ho" },
+    { emoji: "✨", text: "Tum bohot committed ho" },
+    { emoji: "💗", text: "Tumhari smile meri weakness hai" },
+    { emoji: "🌺", text: "Tumhari eyes mein magic hai" },
+    { emoji: "💕", text: "Tumhari voice meri favorite sound hai" },
+    { emoji: "🌸", text: "Tumhari laugh mera favorite music hai" },
+    { emoji: "💖", text: "Tumhari presence meri peace hai" },
+    { emoji: "🌟", text: "Tumhari happiness meri priority hai" },
+    { emoji: "💫", text: "Tumhari comfort meri responsibility hai" },
+    { emoji: "💝", text: "Tumhari smile mera goal hai" },
+    { emoji: "✨", text: "Tumhari joy mera mission hai" },
+    { emoji: "💗", text: "Tumhare saath time quality time hai" },
+    { emoji: "🎀", text: "Tumhare saath moments precious hain" },
+    { emoji: "💕", text: "Tumhare saath memories priceless hain" },
+    { emoji: "🌹", text: "Tumhare saath experiences unforgettable hain" },
+    { emoji: "💖", text: "Tumhare saath conversations meaningful hain" },
+    { emoji: "🌟", text: "Tumhare saath silences comfortable hain" },
+    { emoji: "💫", text: "Tumhare saath laughs genuine hain" },
+    { emoji: "🌺", text: "Tumhare saath smiles real hain" },
+    { emoji: "💝", text: "Tumhare saath feelings deep hain" },
+    { emoji: "✨", text: "Tumhare saath connection strong hai" },
+    { emoji: "💗", text: "Tumhare saath bond unbreakable hai" },
+    { emoji: "💕", text: "Tum mere liye bohot special ho" }
+];
+
+function initScene17() {
+    console.log('Scene 17 initialized!');
+    
+    // Small delay to ensure DOM is ready
+    setTimeout(() => {
+        createReasonsBackground();
+        populateReasons();
+    }, 100);
+}
+
+// Also trigger on scene activation
+document.addEventListener('DOMContentLoaded', function() {
+    const scene17 = document.getElementById('scene17');
+    if (scene17) {
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'class') {
+                    if (scene17.classList.contains('active')) {
+                        const reasonsList = document.getElementById('reasonsList');
+                        if (reasonsList && reasonsList.children.length === 0) {
+                            console.log('Scene 17 became active, populating reasons...');
+                            populateReasons();
+                        }
+                    }
+                }
+            });
+        });
+        observer.observe(scene17, { attributes: true });
+    }
+});
+
+function createReasonsBackground() {
+    const canvas = document.getElementById('reasonsCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const hearts = [];
+    
+    // Create floating hearts
+    for (let i = 0; i < 30; i++) {
+        hearts.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 20 + 15,
+            speed: Math.random() * 0.5 + 0.3,
+            sway: Math.random() * 2 - 1,
+            emoji: ['💗', '💕', '💖', '💝'][Math.floor(Math.random() * 4)]
+        });
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        hearts.forEach((heart) => {
+            heart.y -= heart.speed;
+            heart.x += Math.sin(heart.y * 0.01) * heart.sway;
+            
+            if (heart.y < -30) {
+                heart.y = canvas.height + 30;
+                heart.x = Math.random() * canvas.width;
+            }
+            
+            ctx.font = `${heart.size}px Arial`;
+            ctx.fillText(heart.emoji, heart.x, heart.y);
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+function populateReasons() {
+    const reasonsList = document.getElementById('reasonsList');
+    if (!reasonsList) {
+        console.error('reasonsList element not found!');
+        return;
+    }
+    
+    console.log('Populating', window.reasons.length, 'reasons...');
+    
+    window.reasons.forEach((reason, index) => {
+        setTimeout(() => {
+            const reasonItem = document.createElement('div');
+            reasonItem.className = 'reason-item';
+            reasonItem.innerHTML = `
+                <div class="reason-number">${index + 1}</div>
+                <div class="reason-emoji">${reason.emoji}</div>
+                <div class="reason-text">${reason.text}</div>
+            `;
+            reasonsList.appendChild(reasonItem);
+            
+            // Animate in
+            setTimeout(() => {
+                reasonItem.classList.add('visible');
+            }, 50);
+        }, index * 50); // Faster animation (was 100ms, now 50ms)
+    });
+}
+
+// Add Scene 17 to initialization (don't overwrite, just add to existing)
+if (typeof window.originalInitNewScenes === 'undefined') {
+    window.originalInitNewScenes = initNewScenes;
+}
+
+const tempInitNewScenes = initNewScenes;
+initNewScenes = function(sceneNum) {
+    tempInitNewScenes(sceneNum);
+    if (sceneNum === 17) {
+        console.log('Initializing Scene 17...');
+        initScene17();
+    }
+};

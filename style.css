@@ -4431,3 +4431,267 @@ button,
         font-size: 2rem;
     }
 }
+
+
+/* ========================================
+   SCENE 17: 100 REASONS WHY YOU'RE SPECIAL
+   ======================================== */
+
+#scene17 {
+    background: linear-gradient(135deg, #FF6B9D 0%, #C71585 50%, #FF1493 100%);
+}
+
+.reasons-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(255, 255, 255, 0.1), transparent 40%);
+    animation: reasonsAmbient 10s ease-in-out infinite;
+}
+
+@keyframes reasonsAmbient {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+.reasons-header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: fadeInDown 1s ease;
+}
+
+.reasons-subtitle {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: #FFE4E1;
+    margin: 20px 0;
+    font-family: 'Pacifico', cursive;
+    text-shadow: 0 0 20px rgba(255, 228, 225, 0.6);
+}
+
+.reasons-intro {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    color: #FFF;
+    margin: 20px 0;
+    opacity: 0.9;
+}
+
+.reasons-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 40px 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-height: 600px;
+    overflow-y: auto;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Custom Scrollbar */
+.reasons-container::-webkit-scrollbar {
+    width: 12px;
+}
+
+.reasons-container::-webkit-scrollbar-track {
+    background: rgba(255, 182, 193, 0.2);
+    border-radius: 10px;
+}
+
+.reasons-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #FF6B9D, #FF1493);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.reasons-container::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #FF1493, #C71585);
+}
+
+.reasons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+}
+
+.reason-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
+    border-radius: 20px;
+    border-left: 5px solid #FF1493;
+    box-shadow: 0 5px 15px rgba(255, 20, 147, 0.2);
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.5s ease;
+}
+
+.reason-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.reason-item:hover {
+    transform: translateX(10px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(255, 20, 147, 0.4);
+    background: linear-gradient(135deg, #FFB6C1, #FFE4E1);
+}
+
+.reason-number {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #FF1493, #C71585);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.4);
+}
+
+.reason-emoji {
+    flex-shrink: 0;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    animation: emojiFloat 3s ease-in-out infinite;
+}
+
+@keyframes emojiFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.reason-text {
+    flex: 1;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: #C71585;
+    line-height: 1.6;
+    font-weight: 500;
+}
+
+.reasons-footer {
+    text-align: center;
+    margin-top: 50px;
+    animation: fadeInUp 1s ease 1s backwards;
+}
+
+.reasons-final-message {
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    color: #FFF;
+    margin: 15px 0;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    animation: finalMessageGlow 3s ease-in-out infinite;
+}
+
+@keyframes finalMessageGlow {
+    0%, 100% { 
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+        transform: scale(1);
+    }
+    50% { 
+        text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+        transform: scale(1.02);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .reasons-container {
+        padding: 30px 15px;
+        max-height: 500px;
+    }
+    
+    .reason-item {
+        gap: 15px;
+        padding: 15px;
+    }
+    
+    .reason-number {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reasons-container {
+        padding: 20px 10px;
+        max-height: 450px;
+        border-radius: 20px;
+    }
+    
+    .reason-item {
+        gap: 10px;
+        padding: 12px;
+        border-radius: 15px;
+    }
+    
+    .reason-number {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .reason-emoji {
+        font-size: 1.5rem;
+    }
+    
+    .reason-text {
+        font-size: 0.95rem;
+    }
+}
+
+/* Special animations for milestone numbers */
+.reason-item:nth-child(10) .reason-number,
+.reason-item:nth-child(25) .reason-number,
+.reason-item:nth-child(50) .reason-number,
+.reason-item:nth-child(75) .reason-number,
+.reason-item:nth-child(100) .reason-number {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    animation: milestoneGlow 2s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+@keyframes milestoneGlow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        transform: scale(1);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(255, 215, 0, 1);
+        transform: scale(1.1);
+    }
+}
+
+/* Special styling for the 100th reason */
+.reason-item:nth-child(100) {
+    background: linear-gradient(135deg, #FFD700, #FFA500, #FFD700);
+    border-left: 5px solid #FFD700;
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+    animation: finalReasonPulse 2s ease-in-out infinite;
+}
+
+@keyframes finalReasonPulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(255, 215, 0, 0.8);
+    }
+}
+
+.reason-item:nth-child(100) .reason-text {
+    color: #FF1493;
+    font-weight: 700;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+}

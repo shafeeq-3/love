@@ -1065,6 +1065,131 @@
 
             <div class="gifts-footer">
                 <p class="footer-message">Har tohfa mere dil se hai tumhare liye 💝</p>
+                <button class="next-btn" onclick="nextScene(17)">Continue to Something Special 💫</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 17: 100 Reasons Why You're Special -->
+    <div id="scene17" class="scene">
+        <canvas id="reasonsCanvas"></canvas>
+        <div class="reasons-bg"></div>
+        <div class="content-center">
+            <div class="reasons-header">
+                <h2 class="scene-title" style="color:#FF1493;text-shadow:0 0 30px rgba(255,20,147,0.8);">100 Reasons</h2>
+                <h3 class="reasons-subtitle">Why You're Special, Qandeel 💝</h3>
+                <p class="reasons-intro">Tumhare baare mein 100 cheezain jo mujhe bohot pasand hain...</p>
+            </div>
+            
+            <div class="reasons-container">
+                <div class="reasons-list" id="reasonsList">
+                    <!-- Reasons are now directly in HTML for reliability -->
+                    <div class="reason-item visible"><div class="reason-number">1</div><div class="reason-emoji">😊</div><div class="reason-text">Tumhari muskurahat duniya ki sabse khoobsurat cheez hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">2</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhari aankhon mein ek alag hi chamak hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">3</div><div class="reason-emoji">💕</div><div class="reason-text">Tumhari baatein mere dil ko sukoon deti hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">4</div><div class="reason-emoji">🌟</div><div class="reason-text">Tumhari personality bohot attractive hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">5</div><div class="reason-emoji">💫</div><div class="reason-text">Tumhari hansi meri favorite awaaz hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">6</div><div class="reason-emoji">🌸</div><div class="reason-text">Tumhari simplicity tumhe aur bhi khoobsurat banati hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">7</div><div class="reason-emoji">💝</div><div class="reason-text">Tumhari care mujhe special feel karati hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">8</div><div class="reason-emoji">🎀</div><div class="reason-text">Tumhari sharmana bohot cute hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">9</div><div class="reason-emoji">🌺</div><div class="reason-text">Tumhari samajhdari mujhe impress karti hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">10</div><div class="reason-emoji">💗</div><div class="reason-text">Tum exactly waise ho jaise main chahta tha</div></div>
+                    <div class="reason-item visible"><div class="reason-number">11</div><div class="reason-emoji">🌹</div><div class="reason-text">Tumhari awaaz bohot pyari hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">12</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhare saath waqt kaise guzar jata hai pata nahi chalta</div></div>
+                    <div class="reason-item visible"><div class="reason-number">13</div><div class="reason-emoji">💖</div><div class="reason-text">Tum jab baat karti ho, duniya ruk jaati hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">14</div><div class="reason-emoji">🌟</div><div class="reason-text">Tumhari presence se mahol khushgawar ho jata hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">15</div><div class="reason-emoji">💕</div><div class="reason-text">Tumhare bina din adhura lagta hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">16</div><div class="reason-emoji">🎵</div><div class="reason-text">Tumhari hansi infectious hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">17</div><div class="reason-emoji">💫</div><div class="reason-text">Tumhari khushi mein meri khushi hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">18</div><div class="reason-emoji">🌸</div><div class="reason-text">Tum mere dil ki dhadkan ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">19</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhare saath zindagi perfect hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">20</div><div class="reason-emoji">💝</div><div class="reason-text">Tumhari muskurahat meri subah hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">21</div><div class="reason-emoji">🌺</div><div class="reason-text">Tumhari baatein meri shaam ki chai hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">22</div><div class="reason-emoji">💗</div><div class="reason-text">Tumhari aankhon mein kho jana chahta hoon</div></div>
+                    <div class="reason-item visible"><div class="reason-number">23</div><div class="reason-emoji">🌟</div><div class="reason-text">Tumhari smile dekh kar din ban jata hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">24</div><div class="reason-emoji">💕</div><div class="reason-text">Tumhari ek nazar sab kuch badal deti hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">25</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhare saath har pal khaas lagta hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">26</div><div class="reason-emoji">💖</div><div class="reason-text">Tumhari understanding bohot achi hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">27</div><div class="reason-emoji">🌸</div><div class="reason-text">Tumhari nature bohot sweet hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">28</div><div class="reason-emoji">💫</div><div class="reason-text">Tumhare saath baat karna bohot acha lagta hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">29</div><div class="reason-emoji">🎀</div><div class="reason-text">Tumhari style unique hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">30</div><div class="reason-emoji">💝</div><div class="reason-text">Tumhari thinking positive hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">31</div><div class="reason-emoji">🌹</div><div class="reason-text">Tumhari energy contagious hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">32</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhara sense of humor amazing hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">33</div><div class="reason-emoji">💗</div><div class="reason-text">Tumhari loyalty inspiring hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">34</div><div class="reason-emoji">🌟</div><div class="reason-text">Tumhari honesty refreshing hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">35</div><div class="reason-emoji">💕</div><div class="reason-text">Tumhari kindness touching hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">36</div><div class="reason-emoji">🌺</div><div class="reason-text">Tumhari patience admirable hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">37</div><div class="reason-emoji">💖</div><div class="reason-text">Tumhari intelligence attractive hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">38</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhari confidence beautiful hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">39</div><div class="reason-emoji">💫</div><div class="reason-text">Tumhari humility rare hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">40</div><div class="reason-emoji">🌸</div><div class="reason-text">Tumhari grace elegant hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">41</div><div class="reason-emoji">💝</div><div class="reason-text">Tumhari warmth comforting hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">42</div><div class="reason-emoji">🎵</div><div class="reason-text">Tumhari voice soothing hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">43</div><div class="reason-emoji">💗</div><div class="reason-text">Tumhari eyes expressive hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">44</div><div class="reason-emoji">🌟</div><div class="reason-text">Tumhari smile infectious hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">45</div><div class="reason-emoji">💕</div><div class="reason-text">Tumhari laugh joyful hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">46</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhari presence calming hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">47</div><div class="reason-emoji">🌹</div><div class="reason-text">Tumhari aura positive hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">48</div><div class="reason-emoji">💖</div><div class="reason-text">Tumhari vibe amazing hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">49</div><div class="reason-emoji">💫</div><div class="reason-text">Tumhari spirit strong hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">50</div><div class="reason-emoji">🌺</div><div class="reason-text">Tumhari heart pure hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">51</div><div class="reason-emoji">💝</div><div class="reason-text">Tum bohot caring ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">52</div><div class="reason-emoji">✨</div><div class="reason-text">Tum bohot thoughtful ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">53</div><div class="reason-emoji">💗</div><div class="reason-text">Tum bohot genuine ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">54</div><div class="reason-emoji">🌸</div><div class="reason-text">Tum bohot real ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">55</div><div class="reason-emoji">💕</div><div class="reason-text">Tum bohot authentic ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">56</div><div class="reason-emoji">🌟</div><div class="reason-text">Tum bohot trustworthy ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">57</div><div class="reason-emoji">💖</div><div class="reason-text">Tum bohot reliable ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">58</div><div class="reason-emoji">💫</div><div class="reason-text">Tum bohot supportive ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">59</div><div class="reason-emoji">🎀</div><div class="reason-text">Tum bohot understanding ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">60</div><div class="reason-emoji">💝</div><div class="reason-text">Tum bohot compassionate ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">61</div><div class="reason-emoji">🌹</div><div class="reason-text">Tum bohot empathetic ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">62</div><div class="reason-emoji">✨</div><div class="reason-text">Tum bohot sensitive ho (in a good way)</div></div>
+                    <div class="reason-item visible"><div class="reason-number">63</div><div class="reason-emoji">💗</div><div class="reason-text">Tum bohot mature ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">64</div><div class="reason-emoji">🌺</div><div class="reason-text">Tum bohot wise ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">65</div><div class="reason-emoji">💕</div><div class="reason-text">Tum bohot smart ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">66</div><div class="reason-emoji">🌟</div><div class="reason-text">Tum bohot clever ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">67</div><div class="reason-emoji">💖</div><div class="reason-text">Tum bohot creative ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">68</div><div class="reason-emoji">💫</div><div class="reason-text">Tum bohot talented ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">69</div><div class="reason-emoji">🌸</div><div class="reason-text">Tum bohot skilled ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">70</div><div class="reason-emoji">💝</div><div class="reason-text">Tum bohot capable ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">71</div><div class="reason-emoji">✨</div><div class="reason-text">Tum bohot strong ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">72</div><div class="reason-emoji">💗</div><div class="reason-text">Tum bohot brave ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">73</div><div class="reason-emoji">🎵</div><div class="reason-text">Tum bohot courageous ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">74</div><div class="reason-emoji">💕</div><div class="reason-text">Tum bohot determined ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">75</div><div class="reason-emoji">🌟</div><div class="reason-text">Tum bohot focused ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">76</div><div class="reason-emoji">💖</div><div class="reason-text">Tum bohot ambitious ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">77</div><div class="reason-emoji">💫</div><div class="reason-text">Tum bohot driven ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">78</div><div class="reason-emoji">🌹</div><div class="reason-text">Tum bohot passionate ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">79</div><div class="reason-emoji">💝</div><div class="reason-text">Tum bohot dedicated ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">80</div><div class="reason-emoji">✨</div><div class="reason-text">Tum bohot committed ho</div></div>
+                    <div class="reason-item visible"><div class="reason-number">81</div><div class="reason-emoji">💗</div><div class="reason-text">Tumhari smile meri weakness hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">82</div><div class="reason-emoji">🌺</div><div class="reason-text">Tumhari eyes mein magic hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">83</div><div class="reason-emoji">💕</div><div class="reason-text">Tumhari voice meri favorite sound hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">84</div><div class="reason-emoji">🌸</div><div class="reason-text">Tumhari laugh mera favorite music hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">85</div><div class="reason-emoji">💖</div><div class="reason-text">Tumhari presence meri peace hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">86</div><div class="reason-emoji">🌟</div><div class="reason-text">Tumhari happiness meri priority hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">87</div><div class="reason-emoji">💫</div><div class="reason-text">Tumhari comfort meri responsibility hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">88</div><div class="reason-emoji">💝</div><div class="reason-text">Tumhari smile mera goal hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">89</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhari joy mera mission hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">90</div><div class="reason-emoji">💗</div><div class="reason-text">Tumhare saath time quality time hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">91</div><div class="reason-emoji">🎀</div><div class="reason-text">Tumhare saath moments precious hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">92</div><div class="reason-emoji">💕</div><div class="reason-text">Tumhare saath memories priceless hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">93</div><div class="reason-emoji">🌹</div><div class="reason-text">Tumhare saath experiences unforgettable hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">94</div><div class="reason-emoji">💖</div><div class="reason-text">Tumhare saath conversations meaningful hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">95</div><div class="reason-emoji">🌟</div><div class="reason-text">Tumhare saath silences comfortable hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">96</div><div class="reason-emoji">💫</div><div class="reason-text">Tumhare saath laughs genuine hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">97</div><div class="reason-emoji">🌺</div><div class="reason-text">Tumhare saath smiles real hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">98</div><div class="reason-emoji">💝</div><div class="reason-text">Tumhare saath feelings deep hain</div></div>
+                    <div class="reason-item visible"><div class="reason-number">99</div><div class="reason-emoji">✨</div><div class="reason-text">Tumhare saath connection strong hai</div></div>
+                    <div class="reason-item visible"><div class="reason-number">100</div><div class="reason-emoji">💕</div><div class="reason-text">Tum mere liye bohot special ho</div></div>
+                </div>
+            </div>
+            
+            <div class="reasons-footer">
+                <p class="reasons-final-message">Aur yeh sirf shuruat hai... ✨</p>
+                <p class="reasons-final-message">Tumhare baare mein aur bhi bohot kuch hai jo main kehna chahta hoon 💗</p>
                 <button class="next-btn" onclick="nextScene(10)">Return to Journey 💫</button>
             </div>
         </div>
