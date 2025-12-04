@@ -3502,3 +3502,524 @@ if (isMobile()) {
 
 console.log('%c⌨️ MOBILE KEYBOARD ADDED! ⌨️', 'color: #FF6B9D; font-size: 16px; font-weight: bold;');
 console.log('%cTap the keyboard icon (⌨️) to type!', 'color: #FFB6C1; font-size: 12px;');
+
+// ========================================
+// NEW WORLD-CLASS SCENES FUNCTIONS
+// ========================================
+
+// Scene 11: Floating Lanterns
+function initScene11() {
+    createFloatingLanterns();
+}
+
+function createFloatingLanterns() {
+    const canvas = document.getElementById('lanternCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const lanterns = [];
+    
+    // Auto-generate lanterns
+    setInterval(() => {
+        if (lanterns.length < 30) {
+            lanterns.push({
+                x: Math.random() * canvas.width,
+                y: canvas.height + 50,
+                size: Math.random() * 30 + 40,
+                speed: Math.random() * 0.5 + 0.3,
+                sway: Math.random() * 2 - 1,
+                swaySpeed: Math.random() * 0.02 + 0.01,
+                alpha: Math.random() * 0.3 + 0.7,
+                color: `rgba(255, ${Math.floor(Math.random() * 100 + 150)}, 100, `
+            });
+        }
+    }, 800);
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        lanterns.forEach((lantern, index) => {
+            lantern.y -= lantern.speed;
+            lantern.x += Math.sin(lantern.y * lantern.swaySpeed) * lantern.sway;
+            
+            if (lantern.y < -100) {
+                lanterns.splice(index, 1);
+            }
+            
+            // Draw lantern glow
+            const gradient = ctx.createRadialGradient(
+                lantern.x, lantern.y, 0,
+                lantern.x, lantern.y, lantern.size
+            );
+            gradient.addColorStop(0, lantern.color + lantern.alpha + ')');
+            gradient.addColorStop(0.5, lantern.color + (lantern.alpha * 0.5) + ')');
+            gradient.addColorStop(1, lantern.color + '0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(
+                lantern.x - lantern.size,
+                lantern.y - lantern.size,
+                lantern.size * 2,
+                lantern.size * 2
+            );
+            
+            // Draw lantern body
+            ctx.fillStyle = lantern.color + lantern.alpha + ')';
+            ctx.fillRect(
+                lantern.x - lantern.size/3,
+                lantern.y - lantern.size/2,
+                lantern.size/1.5,
+                lantern.size
+            );
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+function releaseLantern() {
+    const canvas = document.getElementById('lanternCanvas');
+    if (!canvas) return;
+    
+    // Create special lantern from center
+    const specialLantern = document.createElement('div');
+    specialLantern.style.cssText = `
+        position: fixed;
+        left: 50%;
+        bottom: 20%;
+        transform: translateX(-50%);
+        font-size: 4rem;
+        animation: launchLantern 3s ease-out forwards;
+        pointer-events: none;
+        z-index: 1000;
+    `;
+    specialLantern.textContent = '🏮';
+    document.body.appendChild(specialLantern);
+    
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes launchLantern {
+            0% { transform: translateX(-50%) translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) translateY(-800px) scale(0.5); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    setTimeout(() => {
+        specialLantern.remove();
+        style.remove();
+        showWishMessage();
+    }, 3000);
+    
+    if (navigator.vibrate) navigator.vibrate(50);
+}
+
+function showWishMessage() {
+    const message = document.createElement('div');
+    message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: rgba(255, 215, 0, 0.95);
+        padding: 30px 50px;
+        border-radius: 20px;
+        font-size: 1.5rem;
+        color: #fff;
+        text-align: center;
+        z-index: 10000;
+        animation: wishAppear 0.5s ease;
+        box-shadow: 0 10px 40px rgba(255, 215, 0, 0.5);
+    `;
+    message.innerHTML = `
+        <p style="margin-bottom:10px;">✨ Your wish is floating to the stars ✨</p>
+        <p style="font-size:1.2rem;">May it come true, Qandeel 💫</p>
+    `;
+    document.body.appendChild(message);
+    
+    setTimeout(() => message.remove(), 3000);
+}
+
+// Scene 12: Red String of Fate
+function initScene12() {
+    animateRedString();
+}
+
+function animateRedString() {
+    const thread = document.getElementById('redThread');
+    if (!thread) return;
+    
+    let offset = 0;
+    setInterval(() => {
+        offset += 2;
+        thread.style.strokeDasharray = '10 5';
+        thread.style.strokeDashoffset = offset;
+    }, 50);
+}
+
+// Scene 13: Cherry Blossom Tunnel
+function initScene13() {
+    createSakuraTunnel();
+    animateWalkingCouple();
+}
+
+function createSakuraTunnel() {
+    const canvas = document.getElementById('sakuraTunnelCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const petals = [];
+    
+    // Create falling petals
+    setInterval(() => {
+        petals.push({
+            x: Math.random() * canvas.width,
+            y: -20,
+            size: Math.random() * 15 + 10,
+            speed: Math.random() * 2 + 1,
+            sway: Math.random() * 2 - 1,
+            rotation: Math.random() * 360,
+            rotationSpeed: (Math.random() - 0.5) * 5
+        });
+    }, 200);
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw tunnel perspective
+        ctx.strokeStyle = 'rgba(255, 182, 193, 0.3)';
+        ctx.lineWidth = 2;
+        for (let i = 0; i < 10; i++) {
+            const y = i * 80;
+            const width = canvas.width * (1 - i * 0.08);
+            const x = (canvas.width - width) / 2;
+            ctx.strokeRect(x, y, width, 60);
+        }
+        
+        // Draw and animate petals
+        petals.forEach((petal, index) => {
+            petal.y += petal.speed;
+            petal.x += Math.sin(petal.y * 0.01) * petal.sway;
+            petal.rotation += petal.rotationSpeed;
+            
+            if (petal.y > canvas.height) {
+                petals.splice(index, 1);
+            }
+            
+            ctx.save();
+            ctx.translate(petal.x, petal.y);
+            ctx.rotate(petal.rotation * Math.PI / 180);
+            ctx.font = `${petal.size}px Arial`;
+            ctx.fillText('🌸', -petal.size/2, petal.size/2);
+            ctx.restore();
+        });
+        
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+function animateWalkingCouple() {
+    const walkers = document.querySelectorAll('.walker');
+    walkers.forEach((walker, index) => {
+        walker.style.animation = `walk 2s ease-in-out infinite ${index * 0.5}s`;
+    });
+    
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes walk {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Scene 14: First Snow
+let snowflakesCaught = 0;
+
+function initScene14() {
+    createFirstSnow();
+    snowflakesCaught = 0;
+    document.getElementById('snowflakeCount').textContent = '0';
+}
+
+function createFirstSnow() {
+    const canvas = document.getElementById('firstSnowCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const snowflakes = [];
+    
+    // Create interactive snowflakes
+    for (let i = 0; i < 50; i++) {
+        snowflakes.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 4 + 2,
+            speed: Math.random() * 1 + 0.5,
+            sway: Math.random() * 2 - 1,
+            alpha: Math.random() * 0.5 + 0.5
+        });
+    }
+    
+    canvas.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        snowflakes.forEach((flake, index) => {
+            const distance = Math.sqrt((flake.x - x) ** 2 + (flake.y - y) ** 2);
+            if (distance < 30) {
+                snowflakes.splice(index, 1);
+                snowflakesCaught++;
+                document.getElementById('snowflakeCount').textContent = snowflakesCaught;
+                
+                if (snowflakesCaught >= 10) {
+                    showWishGranted();
+                }
+                
+                // Create sparkle effect
+                createSparkleAt(x, y);
+            }
+        });
+    });
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        snowflakes.forEach((flake) => {
+            flake.y += flake.speed;
+            flake.x += Math.sin(flake.y * 0.01) * flake.sway;
+            
+            if (flake.y > canvas.height) {
+                flake.y = -10;
+                flake.x = Math.random() * canvas.width;
+            }
+            
+            // Draw snowflake with glow
+            ctx.shadowBlur = 10;
+            ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+            ctx.fillStyle = `rgba(255, 255, 255, ${flake.alpha})`;
+            ctx.beginPath();
+            ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Draw snowflake details
+            ctx.strokeStyle = `rgba(200, 230, 255, ${flake.alpha})`;
+            ctx.lineWidth = 1;
+            for (let i = 0; i < 6; i++) {
+                ctx.save();
+                ctx.translate(flake.x, flake.y);
+                ctx.rotate((Math.PI / 3) * i);
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(0, flake.size * 2);
+                ctx.stroke();
+                ctx.restore();
+            }
+        });
+        
+        ctx.shadowBlur = 0;
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+function createSparkleAt(x, y) {
+    const sparkle = document.createElement('div');
+    sparkle.textContent = '✨';
+    sparkle.style.cssText = `
+        position: fixed;
+        left: ${x}px;
+        top: ${y}px;
+        font-size: 2rem;
+        pointer-events: none;
+        animation: sparkleUp 1s ease-out forwards;
+        z-index: 1000;
+    `;
+    document.body.appendChild(sparkle);
+    
+    setTimeout(() => sparkle.remove(), 1000);
+}
+
+function showWishGranted() {
+    document.getElementById('wishMessage').style.display = 'block';
+    document.getElementById('wishMessage').style.animation = 'fadeInUp 1s ease';
+    
+    if (navigator.vibrate) navigator.vibrate([50, 100, 50]);
+    
+    // Create celebration effect
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const star = document.createElement('div');
+            star.textContent = ['❄️', '✨', '💫', '⭐'][Math.floor(Math.random() * 4)];
+            star.style.cssText = `
+                position: fixed;
+                left: 50%;
+                top: 50%;
+                font-size: 2rem;
+                pointer-events: none;
+                z-index: 10000;
+            `;
+            const angle = (Math.PI * 2 * i) / 20;
+            const distance = 200;
+            star.style.animation = `explodeStar${i} 1.5s ease-out forwards`;
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes explodeStar${i} {
+                    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+                    100% { transform: translate(calc(-50% + ${Math.cos(angle) * distance}px), calc(-50% + ${Math.sin(angle) * distance}px)) scale(1.5); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(star);
+            setTimeout(() => { star.remove(); style.remove(); }, 1500);
+        }, i * 50);
+    }
+}
+
+// Scene 15: Bioluminescent Beach
+function initScene15() {
+    createBioBeach();
+}
+
+function createBioBeach() {
+    const canvas = document.getElementById('bioBeachCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const particles = [];
+    const ripples = [];
+    
+    // Create ambient bio particles
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 1,
+            speed: Math.random() * 0.5 + 0.2,
+            alpha: Math.random() * 0.5 + 0.3,
+            pulseSpeed: Math.random() * 0.02 + 0.01,
+            pulsePhase: Math.random() * Math.PI * 2
+        });
+    }
+    
+    // Click to create ripples
+    canvas.addEventListener('click', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        ripples.push({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top,
+            radius: 0,
+            maxRadius: 150,
+            alpha: 1
+        });
+        
+        // Create glow particles at click
+        for (let i = 0; i < 10; i++) {
+            particles.push({
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top,
+                size: Math.random() * 4 + 2,
+                speed: Math.random() * 2 + 1,
+                alpha: 1,
+                vx: (Math.random() - 0.5) * 3,
+                vy: (Math.random() - 0.5) * 3,
+                pulseSpeed: 0.05,
+                pulsePhase: 0
+            });
+        }
+        
+        if (navigator.vibrate) navigator.vibrate(20);
+    });
+    
+    function animate() {
+        ctx.fillStyle = 'rgba(0, 26, 51, 0.1)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw particles
+        particles.forEach((particle, index) => {
+            particle.y += particle.speed;
+            if (particle.vx) particle.x += particle.vx;
+            if (particle.vy) particle.y += particle.vy;
+            
+            particle.pulsePhase += particle.pulseSpeed;
+            const pulseFactor = Math.sin(particle.pulsePhase) * 0.5 + 0.5;
+            
+            if (particle.y > canvas.height || particle.alpha <= 0) {
+                if (!particle.vx) {
+                    particle.y = 0;
+                    particle.x = Math.random() * canvas.width;
+                } else {
+                    particles.splice(index, 1);
+                    return;
+                }
+            }
+            
+            if (particle.vx) particle.alpha -= 0.02;
+            
+            const gradient = ctx.createRadialGradient(
+                particle.x, particle.y, 0,
+                particle.x, particle.y, particle.size * 3
+            );
+            gradient.addColorStop(0, `rgba(0, 255, 255, ${particle.alpha * pulseFactor})`);
+            gradient.addColorStop(0.5, `rgba(0, 206, 209, ${particle.alpha * pulseFactor * 0.5})`);
+            gradient.addColorStop(1, 'rgba(0, 128, 255, 0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
+            ctx.fill();
+        });
+        
+        // Draw ripples
+        ripples.forEach((ripple, index) => {
+            ripple.radius += 3;
+            ripple.alpha -= 0.02;
+            
+            if (ripple.alpha <= 0) {
+                ripples.splice(index, 1);
+                return;
+            }
+            
+            ctx.strokeStyle = `rgba(0, 255, 255, ${ripple.alpha})`;
+            ctx.lineWidth = 2;
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = 'rgba(0, 255, 255, 0.8)';
+            ctx.beginPath();
+            ctx.arc(ripple.x, ripple.y, ripple.radius, 0, Math.PI * 2);
+            ctx.stroke();
+        });
+        
+        ctx.shadowBlur = 0;
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+// Initialize new scenes when navigating to them
+// (This extends the existing nextScene function)
+const initNewScenes = function(sceneNum) {
+    if (sceneNum === 11) initScene11();
+    if (sceneNum === 12) initScene12();
+    if (sceneNum === 13) initScene13();
+    if (sceneNum === 14) initScene14();
+    if (sceneNum === 15) initScene15();
+};
+
+// Hook into existing scene navigation
+const existingNextScene = nextScene;
+nextScene = function(sceneNum) {
+    existingNextScene(sceneNum);
+    initNewScenes(sceneNum);
+};

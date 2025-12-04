@@ -577,6 +577,11 @@
                     <span>Discover All Secrets 🎁</span>
                 </button>
                 
+                <!-- Continue Journey Button -->
+                <button class="next-btn" onclick="nextScene(11)" style="margin-top:30px;background:linear-gradient(135deg,#FFD700,#FF6B9D);font-size:1.4rem;padding:20px 50px;">
+                    ✨ Continue The Magic ✨
+                </button>
+                
                 <!-- Secret Codes Hint -->
                 <div class="secret-codes-hint">
                     <p class="hint-title">✨ Magic Words ✨</p>
@@ -602,6 +607,250 @@
                 <span>Hold Me 💕</span>
                 <div class="hold-progress-bar"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- Scene 11: Sky Full of Wishes -->
+    <div id="scene11" class="scene">
+        <canvas id="lanternCanvas"></canvas>
+        <div class="lantern-sky-bg"></div>
+        <div class="content-center">
+            <h2 class="scene-title" style="color:#FFD700;text-shadow:0 0 20px rgba(255,215,0,0.8);">A Sky Full of Dreams ✨</h2>
+            <div class="lantern-story">
+                <p class="lantern-text fade-in-1">Qandeel, tumhari muskurahat meri duniya roshan karti hai...</p>
+                <p class="lantern-text fade-in-2">Tumhari aankhon mein ek alag hi chamak hai ✨</p>
+                <p class="lantern-text fade-in-3">Tumhari baatein mere dil ko sukoon deti hain...</p>
+                <p class="lantern-text fade-in-4">Tum mere liye bohot khaas ho 💫</p>
+            </div>
+            <div class="lantern-interaction">
+                <button class="lantern-btn" onclick="releaseLantern()">
+                    <span>✨ Send Your Wish to the Stars</span>
+                </button>
+                <p class="lantern-hint">Click to make a wish for us</p>
+            </div>
+            <div class="floating-boat">
+                <svg viewBox="0 0 400 200" class="boat-svg">
+                    <ellipse cx="200" cy="180" rx="80" ry="15" fill="rgba(0,0,0,0.2)"/>
+                    <path d="M 150 160 Q 200 150 250 160 L 240 180 L 160 180 Z" fill="#8B4513"/>
+                    <ellipse cx="170" cy="140" rx="20" ry="25" fill="#FFB6C1"/>
+                    <circle cx="170" cy="125" r="15" fill="#FFB6C1"/>
+                    <ellipse cx="230" cy="140" rx="20" ry="25" fill="#DDA0DD"/>
+                    <circle cx="230" cy="125" r="15" fill="#DDA0DD"/>
+                    <circle cx="165" cy="135" r="4" fill="#000"/>
+                    <circle cx="225" cy="135" r="4" fill="#000"/>
+                    <path d="M 185 145 Q 200 140 215 145" stroke="#FF1493" stroke-width="3" fill="none"/>
+                </svg>
+            </div>
+            <button class="next-btn" onclick="nextScene(12)">Continue 💕</button>
+        </div>
+    </div>
+
+    <!-- Scene 12: Our Unbreakable Connection -->
+    <div id="scene12" class="scene">
+        <canvas id="redStringCanvas"></canvas>
+        <div class="japanese-paper-bg"></div>
+        <div class="content-center">
+            <h2 class="scene-title japanese-title">Our Connection 💕</h2>
+            <p class="scene-subtitle">A Bond That Can Never Break</p>
+            <div class="legend-container">
+                <div class="legend-text">
+                    <p class="legend-line">Qandeel, tumse milna meri zindagi ka sabse haseen lamha hai...</p>
+                    <p class="legend-line">Tumhari baatein mere dil ko chain deti hain</p>
+                    <p class="legend-line">Tumhari muskurahat meri khushi hai</p>
+                    <p class="legend-line">Tum mere liye bohot ahmiyat rakhti ho...</p>
+                    <p class="legend-line">Yeh rishta kabhi kamzor nahi hoga 💗</p>
+                </div>
+                <div class="red-string-visual">
+                    <div class="soul-left">
+                        <div class="soul-avatar pink">
+                            <div class="soul-face">
+                                <div class="soul-eye"></div>
+                                <div class="soul-eye"></div>
+                                <div class="soul-smile"></div>
+                            </div>
+                        </div>
+                        <p class="soul-label">Me</p>
+                    </div>
+                    <svg class="string-svg" viewBox="0 0 400 200">
+                        <defs>
+                            <filter id="glow-red">
+                                <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                                <feMerge>
+                                    <feMergeNode in="coloredBlur"/>
+                                    <feMergeNode in="SourceGraphic"/>
+                                </feMerge>
+                            </filter>
+                        </defs>
+                        <path id="redThread" d="M 50 100 Q 100 50 200 100 Q 300 150 350 100" 
+                              stroke="#DC143C" stroke-width="4" fill="none" 
+                              filter="url(#glow-red)" class="animated-thread"/>
+                        <circle cx="50" cy="100" r="8" fill="#DC143C" class="thread-end"/>
+                        <circle cx="350" cy="100" r="8" fill="#DC143C" class="thread-end"/>
+                    </svg>
+                    <div class="soul-right">
+                        <div class="soul-avatar purple">
+                            <div class="soul-face">
+                                <div class="soul-eye"></div>
+                                <div class="soul-eye"></div>
+                                <div class="soul-smile"></div>
+                            </div>
+                        </div>
+                        <p class="soul-label">Qandeel</p>
+                    </div>
+                </div>
+                <div class="fate-message">
+                    <p>💫 Chahe kitni bhi doori ho, chahe kitna bhi waqt guzar jaye...</p>
+                    <p>💗 Humara rishta hamesha mazboot rahega</p>
+                    <p>✨ Tum mere dil mein hamesha rahogi</p>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextScene(13)">Continue 🌸</button>
+        </div>
+    </div>
+
+    <!-- Scene 13: Garden of Flowers -->
+    <div id="scene13" class="scene">
+        <canvas id="sakuraTunnelCanvas"></canvas>
+        <div class="tunnel-perspective"></div>
+        <div class="content-center">
+            <h2 class="scene-title" style="color:#FFB6C1;">Garden of Dreams 🌸</h2>
+            <div class="tunnel-story">
+                <p class="tunnel-text">Qandeel, tumhare saath har pal jannat jaisa lagta hai...</p>
+                <p class="tunnel-text">Tumhari muskurahat phoolon se bhi khoobsurat hai 🌸</p>
+                <p class="tunnel-text">Tumhari baatein dil ko sukoon deti hain...</p>
+                <p class="tunnel-text">Tum mere liye sabse khaas ho 💕</p>
+            </div>
+            <div class="tunnel-walk-container">
+                <div class="tunnel-instruction">
+                    <p>🌸 Imagine us walking together through this beautiful path 🌸</p>
+                </div>
+                <div class="walking-couple">
+                    <svg viewBox="0 0 300 200" class="couple-walking-svg">
+                        <g class="walker walker-1">
+                            <ellipse cx="100" cy="120" rx="30" ry="35" fill="#FFB6C1"/>
+                            <circle cx="100" cy="90" r="20" fill="#FFB6C1"/>
+                            <circle cx="95" cy="88" r="4" fill="#000"/>
+                            <path d="M 90 105 Q 100 110 110 105" stroke="#000" stroke-width="2" fill="none"/>
+                            <rect x="95" y="155" width="10" height="30" fill="#FFB6C1"/>
+                        </g>
+                        <g class="walker walker-2">
+                            <ellipse cx="200" cy="120" rx="30" ry="35" fill="#DDA0DD"/>
+                            <circle cx="200" cy="90" r="20" fill="#DDA0DD"/>
+                            <circle cx="205" cy="88" r="4" fill="#000"/>
+                            <path d="M 190 105 Q 200 110 210 105" stroke="#000" stroke-width="2" fill="none"/>
+                            <rect x="195" y="155" width="10" height="30" fill="#DDA0DD"/>
+                        </g>
+                        <path d="M 130 110 Q 150 105 170 110" stroke="#FF1493" stroke-width="4" fill="none"/>
+                    </svg>
+                </div>
+                <div class="sakura-poem">
+                    <p class="poem-jp">Tumhare saath har raasta khoobsurat hai...</p>
+                    <p class="poem-en">Every path is beautiful with you...</p>
+                    <p class="poem-jp">Tumhari muskurahat meri duniya roshan karti hai</p>
+                    <p class="poem-en">Your smile lights up my world 💗</p>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextScene(14)">Continue ❄️</button>
+        </div>
+    </div>
+
+    <!-- Scene 14: Winter Magic -->
+    <div id="scene14" class="scene">
+        <canvas id="firstSnowCanvas"></canvas>
+        <div class="winter-night-bg"></div>
+        <div class="content-center">
+            <h2 class="scene-title" style="color:#E0F7FF;text-shadow:0 0 20px rgba(255,255,255,0.8);">Winter Magic ❄️</h2>
+            <div class="korean-legend">
+                <div class="legend-box">
+                    <p class="korean-text">A Special Moment:</p>
+                    <p class="legend-detail">Qandeel, tumhari muskurahat sardi mein bhi garmaahat deti hai...</p>
+                    <p class="legend-detail">Tumhare saath har mausam khoobsurat lagta hai...</p>
+                    <p class="legend-detail">Tumhari baatein dil ko sukoon deti hain...</p>
+                    <p class="legend-detail">Tum mere liye bohot khaas ho ❄️✨</p>
+                </div>
+            </div>
+            <div class="snow-interaction">
+                <div class="snowflake-catcher">
+                    <p class="catch-instruction">❄️ Click the snowflakes to catch them ❄️</p>
+                    <div class="wish-counter">
+                        <p>Snowflakes Caught: <span id="snowflakeCount">0</span>/10</p>
+                    </div>
+                </div>
+                <div class="winter-couple">
+                    <svg viewBox="0 0 400 250" class="winter-scene-svg">
+                        <ellipse cx="150" cy="180" rx="40" ry="45" fill="#FFB6C1"/>
+                        <circle cx="150" cy="140" r="28" fill="#FFB6C1"/>
+                        <rect x="140" y="140" width="20" height="15" fill="#FF6B9D"/>
+                        <circle cx="145" cy="138" r="5" fill="#000"/>
+                        <path d="M 140 155 Q 150 160 160 155" stroke="#000" stroke-width="2" fill="none"/>
+                        
+                        <ellipse cx="250" cy="180" rx="40" ry="45" fill="#DDA0DD"/>
+                        <circle cx="250" cy="140" r="28" fill="#DDA0DD"/>
+                        <rect x="240" y="140" width="20" height="15" fill="#9370DB"/>
+                        <circle cx="255" cy="138" r="5" fill="#000"/>
+                        <path d="M 240 155 Q 250 160 260 155" stroke="#000" stroke-width="2" fill="none"/>
+                        
+                        <path d="M 190 160 Q 200 155 210 160" stroke="#FF1493" stroke-width="5" fill="none"/>
+                        <path d="M 195 145 Q 200 135 205 145" fill="#FF69B4"/>
+                    </svg>
+                </div>
+                <div class="wish-message" id="wishMessage" style="display:none;">
+                    <p class="wish-text">✨ Tumhari khushi meri dua hai ✨</p>
+                    <p class="wish-detail">May Allah bless you with all happiness, Qandeel 💫</p>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextScene(15)">Continue 🌊</button>
+        </div>
+    </div>
+
+    <!-- Scene 15: Magical Ocean -->
+    <div id="scene15" class="scene">
+        <canvas id="bioBeachCanvas"></canvas>
+        <div class="night-ocean-bg"></div>
+        <div class="content-center">
+            <h2 class="scene-title" style="color:#00CED1;text-shadow:0 0 30px rgba(0,206,209,0.8);">Magical Ocean 🌊</h2>
+            <div class="beach-story">
+                <p class="beach-text">Qandeel, tumhari aankhein samundar se bhi gehri hain...</p>
+                <p class="beach-text">Tumhari muskurahat sitaron se bhi chamakdaar hai ✨</p>
+                <p class="beach-text">Tumhare saath har pal khaas lagta hai 🌟</p>
+                <p class="beach-text">Tum mere liye bohot ahmiyat rakhti ho 💙</p>
+            </div>
+            <div class="beach-interaction">
+                <p class="interaction-hint">💫 Click anywhere to create magical ripples 💫</p>
+                <div class="beach-scene">
+                    <svg viewBox="0 0 600 300" class="beach-svg">
+                        <defs>
+                            <radialGradient id="glowGrad">
+                                <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1"/>
+                                <stop offset="100%" style="stop-color:#0080FF;stop-opacity:0"/>
+                            </radialGradient>
+                        </defs>
+                        <rect width="600" height="300" fill="#001a33"/>
+                        <ellipse cx="300" cy="250" rx="200" ry="40" fill="rgba(0,206,209,0.2)"/>
+                        <g class="beach-couple-silhouette">
+                            <ellipse cx="250" cy="200" rx="25" ry="30" fill="#1a1a2a"/>
+                            <circle cx="250" cy="175" r="18" fill="#1a1a2a"/>
+                            <ellipse cx="350" cy="200" rx="25" ry="30" fill="#1a1a2a"/>
+                            <circle cx="350" cy="175" r="18" fill="#1a1a2a"/>
+                            <path d="M 275 190 Q 300 185 325 190" stroke="#00CED1" stroke-width="3" fill="none"/>
+                        </g>
+                        <text x="300" y="280" font-size="16" text-anchor="middle" fill="#00CED1" opacity="0.8">
+                            "Tumhare saath har lamha jaadu jaisa lagta hai..."
+                        </text>
+                    </svg>
+                </div>
+                <div class="footprints-container">
+                    <p class="footprints-text">👣 Humari yaadon ke nishaan 👣</p>
+                </div>
+            </div>
+            <div class="final-beach-message">
+                <p class="romantic-quote">"Jaise yeh lehrain chamakti hain..."</p>
+                <p class="romantic-quote">"Waise hi tum meri zindagi roshan karti ho 💙"</p>
+                <p class="romantic-quote">"Tum mere liye ek khaas tohfa ho ✨"</p>
+            </div>
+            <button class="next-btn" onclick="nextScene(10)" style="background:linear-gradient(135deg,#00CED1,#FF6B9D);">
+                Return to Journey 💫
+            </button>
         </div>
     </div>
 
