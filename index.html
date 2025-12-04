@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>💗 For Qandeel - A Journey of Love 💗</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Music Toggle -->
+    <div class="music-toggle" onclick="toggleMusic()">
+        <span id="music-icon">🎵</span>
+    </div>
+    <!-- Background Music - Auto Play -->
+    <audio id="bgMusic" loop autoplay>
+        <source src="https://www.youtube.com/watch?v=njmrj2X0fJQ" type="audio/mpeg">
+    </audio>
+    
+    <!-- YouTube Player (Hidden) -->
+    <div id="youtube-player" style="display:none;"></div>
+
+    <!-- Preloader with Animation -->
+    <div id="preloader" class="scene active">
+        <div class="love-loader">
+            <div class="heart-container">
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <div class="heart"></div>
+            </div>
+        </div>
+        <p class="loading-text">Creating magic for Qandeel...</p>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Scene 1: Magical Welcome -->
+    <div id="scene1" class="scene">
+        <canvas id="starsCanvas"></canvas>
+        <div class="sakura-fall"></div>
+        <div class="content-center">
+            <div class="welcome-container">
+                <h1 class="magical-title">
+                    <span class="letter">F</span><span class="letter">o</span><span class="letter">r</span>
+                    <span class="letter">S</span><span class="letter">o</span><span class="letter">m</span><span class="letter">e</span><span class="letter">o</span><span class="letter">n</span><span class="letter">e</span>
+                    <span class="letter">S</span><span class="letter">p</span><span class="letter">e</span><span class="letter">c</span><span class="letter">i</span><span class="letter">a</span><span class="letter">l</span>
+                </h1>
+                <div class="cute-mascot">
+                    <svg viewBox="0 0 200 200" class="bear-svg">
+                        <defs>
+                            <radialGradient id="bearGrad">
+                                <stop offset="0%" style="stop-color:#FFE4E1"/>
+                                <stop offset="100%" style="stop-color:#FFB6C1"/>
+                            </radialGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="30" fill="url(#bearGrad)"/>
+                        <circle cx="150" cy="50" r="30" fill="url(#bearGrad)"/>
+                        <ellipse cx="100" cy="120" rx="70" ry="80" fill="url(#bearGrad)"/>
+                        <circle cx="80" cy="110" r="8" fill="#000"/>
+                        <circle cx="120" cy="110" r="8" fill="#000"/>
+                        <ellipse cx="100" cy="130" rx="15" ry="10" fill="#FF69B4"/>
+                        <path d="M 85 145 Q 100 155 115 145" stroke="#000" stroke-width="3" fill="none"/>
+                        <circle cx="60" cy="130" r="15" fill="#FFB6C1" opacity="0.6"/>
+                        <circle cx="140" cy="130" r="15" fill="#FFB6C1" opacity="0.6"/>
+                        <g class="bear-heart">
+                            <path d="M 100 165 L 90 175 Q 100 185 100 195 Q 100 185 110 175 Z" fill="#FF1493"/>
+                        </g>
+                    </svg>
+                </div>
+                <button class="start-btn" onclick="startJourney()">
+                    <span class="btn-text">Begin Our Story</span>
+                    <span class="btn-sparkle">✨</span>
+                </button>
+            </div>
+        </div>
+        <div class="hidden-element heart-secret" onclick="unlockSecret(1)">💗</div>
+        <div class="floating-message">Click the heart 💗</div>
+        <div class="keyboard-hint">
+            <p>💡 Psst... Try typing "qandeel" anytime!</p>
+        </div>
+    </div>
+
+    <!-- Scene 2: Name Reveal with Neon Magic -->
+    <div id="scene2" class="scene">
+        <div class="neon-city-bg"></div>
+        <canvas id="butterflyCanvas"></canvas>
+        <div class="content-center">
+            <div class="name-reveal-container">
+                <div class="name-wrapper">
+                    <h1 class="neon-name" data-text="Qandeel">Qandeel</h1>
+                    <div class="name-underline"></div>
+                </div>
+                <p class="name-subtitle">The brightest star in my universe ✨</p>
+                <div class="compliment-carousel">
+                    <p class="compliment active">Beautiful soul</p>
+                    <p class="compliment">Precious heart</p>
+                    <p class="compliment">My inspiration</p>
+                    <p class="compliment">Pure light</p>
+                    <p class="compliment">My everything</p>
+                </div>
+                <div class="sticker-duo">
+                    <div class="sticker-char milk">
+                        <svg viewBox="0 0 120 140">
+                            <ellipse cx="60" cy="70" rx="45" ry="50" fill="#FFF"/>
+                            <circle cx="35" cy="30" r="20" fill="#FFF"/>
+                            <circle cx="85" cy="30" r="20" fill="#FFF"/>
+                            <circle cx="50" cy="65" r="5" fill="#000"/>
+                            <circle cx="70" cy="65" r="5" fill="#000"/>
+                            <ellipse cx="60" cy="80" rx="8" ry="5" fill="#FFB6C1"/>
+                            <path d="M 48 90 Q 60 98 72 90" stroke="#000" stroke-width="2" fill="none"/>
+                            <circle cx="30" cy="75" r="10" fill="#FFB6C1" opacity="0.5"/>
+                            <circle cx="90" cy="75" r="10" fill="#FFB6C1" opacity="0.5"/>
+                            <text x="60" y="125" font-size="12" text-anchor="middle" fill="#FF69B4">Milk</text>
+                        </svg>
+                    </div>
+                    <div class="heart-between">💕</div>
+                    <div class="sticker-char mocha">
+                        <svg viewBox="0 0 120 140">
+                            <ellipse cx="60" cy="70" rx="45" ry="50" fill="#D2B48C"/>
+                            <circle cx="35" cy="30" r="20" fill="#D2B48C"/>
+                            <circle cx="85" cy="30" r="20" fill="#D2B48C"/>
+                            <circle cx="50" cy="65" r="5" fill="#000"/>
+                            <circle cx="70" cy="65" r="5" fill="#000"/>
+                            <ellipse cx="60" cy="80" rx="8" ry="5" fill="#8B4513"/>
+                            <path d="M 48 90 Q 60 98 72 90" stroke="#000" stroke-width="2" fill="none"/>
+                            <circle cx="30" cy="75" r="10" fill="#DEB887" opacity="0.5"/>
+                            <circle cx="90" cy="75" r="10" fill="#DEB887" opacity="0.5"/>
+                            <text x="60" y="125" font-size="12" text-anchor="middle" fill="#8B4513">Mocha</text>
+                        </svg>
+                    </div>
+                </div>
+                <button class="next-btn" onclick="nextScene(3)">Continue 💫</button>
+            </div>
+        </div>
+        <div class="hidden-element butterfly-secret" onclick="unlockSecret(2)">🦋</div>
+    </div>
+""
+  
+  <!-- Scene 3: Anime Sunset Romance -->
+    <div id="scene3" class="scene">
+        <div class="sunset-gradient"></div>
+        <canvas id="sakuraCanvas"></canvas>
+        <div class="content-center">
+            <div class="anime-scene">
+                <svg viewBox="0 0 600 400" class="couple-silhouette">
+                    <defs>
+                        <linearGradient id="sunsetGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF6B9D"/>
+                            <stop offset="50%" style="stop-color:#FFA07A"/>
+                            <stop offset="100%" style="stop-color:#FF7F50"/>
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <circle cx="300" cy="100" r="80" fill="#FFD700" opacity="0.8" filter="url(#glow)"/>
+                    <ellipse cx="300" cy="380" rx="250" ry="30" fill="rgba(0,0,0,0.2)"/>
+                    <g class="girl-silhouette">
+                        <ellipse cx="220" cy="200" rx="40" ry="45" fill="url(#sunsetGrad)"/>
+                        <circle cx="220" cy="160" r="30" fill="url(#sunsetGrad)"/>
+                        <path d="M 200 160 Q 190 140 200 130 Q 210 140 220 135 Q 230 140 240 130 Q 250 140 240 160" fill="url(#sunsetGrad)"/>
+                        <rect x="210" y="245" width="20" height="80" fill="url(#sunsetGrad)"/>
+                        <rect x="200" y="325" width="15" height="50" fill="url(#sunsetGrad)"/>
+                        <rect x="225" y="325" width="15" height="50" fill="url(#sunsetGrad)"/>
+                    </g>
+                    <g class="boy-silhouette">
+                        <ellipse cx="380" cy="210" rx="45" ry="50" fill="url(#sunsetGrad)"/>
+                        <circle cx="380" cy="165" r="32" fill="url(#sunsetGrad)"/>
+                        <rect x="370" y="260" width="20" height="85" fill="url(#sunsetGrad)"/>
+                        <rect x="360" y="345" width="15" height="55" fill="url(#sunsetGrad)"/>
+                        <rect x="385" y="345" width="15" height="55" fill="url(#sunsetGrad)"/>
+                    </g>
+                    <g class="holding-hands" filter="url(#glow)">
+                        <path d="M 240 220 Q 280 215 320 220 Q 340 225 360 220" stroke="#FF1493" stroke-width="12" fill="none" stroke-linecap="round"/>
+                        <circle cx="300" cy="218" r="15" fill="#FF69B4"/>
+                    </g>
+                </svg>
+                <div class="poem-container">
+                    <p class="poem-line" data-delay="0">In every sunset, I see your beauty... 🌅</p>
+                    <p class="poem-line" data-delay="2000">In every star, I feel your warmth... ⭐</p>
+                    <p class="poem-line" data-delay="4000">You are my peace, my light, my forever... 💗</p>
+                    <p class="poem-line" data-delay="6000">With you, every moment becomes magical... ✨</p>
+                </div>
+                <button class="next-btn" onclick="nextScene(4)">Next Chapter 🌸</button>
+            </div>
+        </div>
+        <div class="hidden-element star-secret" onclick="unlockSecret(3)">⭐</div>
+    </div>
+
+    <!-- Scene 4: Interactive Sticker Playground -->
+    <div id="scene4" class="scene">
+        <div class="pastel-dream-bg"></div>
+        <div class="content-center">
+            <h2 class="scene-title">Cute Moments Together 🧸</h2>
+            <div class="sticker-grid">
+                <div class="interactive-sticker" onclick="stickerReact(this, 'dudu')">
+                    <svg viewBox="0 0 150 150" class="sticker-svg">
+                        <circle cx="40" cy="35" r="25" fill="#D4A5A5"/>
+                        <circle cx="110" cy="35" r="25" fill="#D4A5A5"/>
+                        <ellipse cx="75" cy="85" rx="50" ry="55" fill="#D4A5A5"/>
+                        <circle cx="60" cy="75" r="8" fill="#000"/>
+                        <circle cx="90" cy="75" r="8" fill="#000"/>
+                        <path d="M 55 95 Q 75 108 95 95" stroke="#000" stroke-width="3" fill="none"/>
+                        <circle cx="40" cy="90" r="12" fill="#FFB6C1"/>
+                        <circle cx="110" cy="90" r="12" fill="#FFB6C1"/>
+                        <path d="M 65 60 L 60 55 M 85 60 L 90 55" stroke="#000" stroke-width="2"/>
+                    </svg>
+                    <p class="sticker-label">Dudu 💕</p>
+                </div>
+                <div class="interactive-sticker" onclick="stickerReact(this, 'bubu')">
+                    <svg viewBox="0 0 150 150" class="sticker-svg">
+                        <circle cx="40" cy="35" r="25" fill="#C9A0DC"/>
+                        <circle cx="110" cy="35" r="25" fill="#C9A0DC"/>
+                        <ellipse cx="75" cy="85" rx="50" ry="55" fill="#C9A0DC"/>
+                        <circle cx="60" cy="75" r="8" fill="#000"/>
+                        <circle cx="90" cy="75" r="8" fill="#000"/>
+                        <path d="M 58 92 Q 75 102 92 92" stroke="#000" stroke-width="3" fill="none"/>
+                        <path d="M 30 65 Q 25 60 30 55 Q 35 60 30 65" fill="#FF69B4"/>
+                        <path d="M 120 65 Q 125 60 120 55 Q 115 60 120 65" fill="#FF69B4"/>
+                    </svg>
+                    <p class="sticker-label">Bubu 💜</p>
+                </div>
+                <div class="interactive-sticker shy-sticker" onclick="stickerRunAway(this)">
+                    <svg viewBox="0 0 150 150" class="sticker-svg">
+                        <circle cx="75" cy="75" r="55" fill="#FFE4E1"/>
+                        <circle cx="55" cy="65" r="8" fill="#000"/>
+                        <circle cx="95" cy="65" r="8" fill="#000"/>
+                        <path d="M 55 90 Q 75 85 95 90" stroke="#000" stroke-width="2" fill="none"/>
+                        <circle cx="35" cy="80" r="15" fill="#FFB6C1" opacity="0.6"/>
+                        <circle cx="115" cy="80" r="15" fill="#FFB6C1" opacity="0.6"/>
+                        <path d="M 60 55 Q 55 50 60 45 M 90 55 Q 95 50 90 45" stroke="#FF69B4" stroke-width="2"/>
+                    </svg>
+                    <p class="sticker-label">Catch me! 😊</p>
+                </div>
+                <div class="interactive-sticker" onclick="stickerReact(this, 'heart')">
+                    <svg viewBox="0 0 150 150" class="sticker-svg">
+                        <ellipse cx="75" cy="85" rx="45" ry="50" fill="#FFC0CB"/>
+                        <circle cx="45" cy="40" r="22" fill="#FFC0CB"/>
+                        <circle cx="105" cy="40" r="22" fill="#FFC0CB"/>
+                        <circle cx="60" cy="75" r="7" fill="#000"/>
+                        <circle cx="90" cy="75" r="7" fill="#000"/>
+                        <path d="M 60 95 Q 75 105 90 95" stroke="#000" stroke-width="3" fill="none"/>
+                        <g class="bear-holding-heart">
+                            <path d="M 75 110 L 65 120 Q 75 130 75 140 Q 75 130 85 120 Z" fill="#FF1493"/>
+                        </g>
+                    </svg>
+                    <p class="sticker-label">For You 💝</p>
+                </div>
+            </div>
+            <div class="emoji-rain"></div>
+            <button class="next-btn" onclick="nextScene(5)">More Love 💕</button>
+        </div>
+        <div class="hidden-element hug-secret" onclick="unlockSecret(4)">
+            <svg viewBox="0 0 200 120" class="hug-sticker">
+                <ellipse cx="60" cy="60" rx="35" ry="40" fill="#FFB6C1"/>
+                <circle cx="40" cy="30" r="20" fill="#FFB6C1"/>
+                <ellipse cx="140" cy="60" rx="35" ry="40" fill="#DDA0DD"/>
+                <circle cx="160" cy="30" r="20" fill="#DDA0DD"/>
+                <circle cx="50" cy="55" r="5" fill="#000"/>
+                <circle cx="150" cy="55" r="5" fill="#000"/>
+                <path d="M 45 70 Q 55 75 65 70" stroke="#000" stroke-width="2" fill="none"/>
+                <path d="M 135 70 Q 145 75 155 70" stroke="#000" stroke-width="2" fill="none"/>
+                <ellipse cx="100" cy="80" rx="60" ry="20" fill="#FF69B4" opacity="0.3"/>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Scene 5: Heartfelt Message with Typing Effect -->
+    <div id="scene5" class="scene">
+        <canvas id="nightSkyCanvas"></canvas>
+        <div class="floating-hearts-bg"></div>
+        <div class="content-center">
+            <div class="message-card">
+                <div class="heartbeat-aura"></div>
+                <h2 class="message-header">Dear Qandeel 💗</h2>
+                <div class="message-content" id="typedMessage"></div>
+                <div class="message-signature">
+                    <p>Forever yours,</p>
+                    <p class="signature-heart">💕</p>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextScene(6)">Continue Journey 🌙</button>
+        </div>
+        <div class="hidden-element orb-secret" onclick="unlockSecret(5)">
+            <div class="glowing-orb"></div>
+        </div>
+    </div>
+
+    <!-- Scene 6: Memory Gallery -->
+    <div id="scene6" class="scene">
+        <div class="gallery-ambient"></div>
+        <div class="content-center">
+            <h2 class="scene-title">Dreams I Have With You 🌸</h2>
+            <div class="memory-gallery">
+                <div class="memory-card" data-theme="sakura">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <svg viewBox="0 0 300 200" class="memory-illustration">
+                                <rect width="300" height="200" fill="url(#sakuraGrad)"/>
+                                <defs>
+                                    <linearGradient id="sakuraGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#FFC0CB"/>
+                                        <stop offset="100%" style="stop-color:#FFB6C1"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="150" cy="60" r="30" fill="#FFE4E1" opacity="0.8"/>
+                                <text x="150" y="120" font-size="24" text-anchor="middle" fill="#FF69B4">🌸</text>
+                                <text x="150" y="160" font-size="16" text-anchor="middle" fill="#C71585">Walking under</text>
+                                <text x="150" y="180" font-size="16" text-anchor="middle" fill="#C71585">cherry blossoms</text>
+                            </svg>
+                        </div>
+                        <div class="card-back">
+                            <p>Hand in hand, petals falling around us, time standing still... 🌸💕</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="memory-card" data-theme="stars">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <svg viewBox="0 0 300 200" class="memory-illustration">
+                                <rect width="300" height="200" fill="url(#nightGrad)"/>
+                                <defs>
+                                    <linearGradient id="nightGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#191970"/>
+                                        <stop offset="100%" style="stop-color:#000080"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="80" cy="40" r="2" fill="#FFF"/>
+                                <circle cx="220" cy="60" r="2" fill="#FFF"/>
+                                <circle cx="150" cy="30" r="2" fill="#FFF"/>
+                                <circle cx="100" cy="80" r="2" fill="#FFF"/>
+                                <circle cx="250" cy="100" r="2" fill="#FFF"/>
+                                <text x="150" y="130" font-size="24" text-anchor="middle" fill="#FFD700">⭐</text>
+                                <text x="150" y="160" font-size="16" text-anchor="middle" fill="#FFF">Stargazing</text>
+                                <text x="150" y="180" font-size="16" text-anchor="middle" fill="#FFF">together forever</text>
+                            </svg>
+                        </div>
+                        <div class="card-back">
+                            <p>Under the stars, sharing dreams, feeling infinite... ⭐💫</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="memory-card" data-theme="sunset">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <svg viewBox="0 0 300 200" class="memory-illustration">
+                                <rect width="300" height="200" fill="url(#sunsetGrad2)"/>
+                                <defs>
+                                    <linearGradient id="sunsetGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#FF6B9D"/>
+                                        <stop offset="50%" style="stop-color:#FFA07A"/>
+                                        <stop offset="100%" style="stop-color:#FF7F50"/>
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="150" cy="80" r="40" fill="#FFD700" opacity="0.7"/>
+                                <text x="150" y="140" font-size="24" text-anchor="middle" fill="#FFF">🌅</text>
+                                <text x="150" y="165" font-size="16" text-anchor="middle" fill="#FFF">Watching sunsets</text>
+                                <text x="150" y="185" font-size="16" text-anchor="middle" fill="#FFF">every evening</text>
+                            </svg>
+                        </div>
+                        <div class="card-back">
+                            <p>Every sunset more beautiful because you're beside me... 🌅💗</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="memory-card" data-theme="cozy">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <svg viewBox="0 0 300 200" class="memory-illustration">
+                                <rect width="300" height="200" fill="url(#cozyGrad)"/>
+                                <defs>
+                                    <linearGradient id="cozyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#FFECD2"/>
+                                        <stop offset="100%" style="stop-color:#FCB69F"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="100" y="60" width="100" height="80" rx="10" fill="#FFF" opacity="0.6"/>
+                                <text x="150" y="120" font-size="24" text-anchor="middle" fill="#FF69B4">☕</text>
+                                <text x="150" y="160" font-size="16" text-anchor="middle" fill="#8B4513">Cozy moments</text>
+                                <text x="150" y="180" font-size="16" text-anchor="middle" fill="#8B4513">just us two</text>
+                            </svg>
+                        </div>
+                        <div class="card-back">
+                            <p>Warm drinks, soft blankets, your smile... perfect peace... ☕💕</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="next-btn" onclick="nextScene(7)">Almost There 💫</button>
+        </div>
+        <div class="hidden-element shake-secret" onclick="unlockSecret(6)">
+            <div class="shake-indicator">
+                <p>📱 Shake me!</p>
+                <div class="shake-icon">📳</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 7: Koi Pond Reflection -->
+    <div id="scene7" class="scene">
+        <canvas id="koiCanvas"></canvas>
+        <div class="water-ripples"></div>
+        <div class="content-center">
+            <h2 class="scene-title">Peaceful Moments 🎋</h2>
+            <div class="koi-pond-scene">
+                <svg viewBox="0 0 600 400" class="pond-svg">
+                    <defs>
+                        <radialGradient id="waterGrad">
+                            <stop offset="0%" style="stop-color:#87CEEB"/>
+                            <stop offset="100%" style="stop-color:#4682B4"/>
+                        </radialGradient>
+                        <linearGradient id="koiGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#FF6B9D"/>
+                            <stop offset="50%" style="stop-color:#FFA07A"/>
+                            <stop offset="100%" style="stop-color:#FF6B9D"/>
+                        </linearGradient>
+                    </defs>
+                    <ellipse cx="300" cy="200" rx="280" ry="180" fill="url(#waterGrad)" opacity="0.6"/>
+                    <g class="koi-fish" transform="translate(0,0)">
+                        <ellipse cx="200" cy="180" rx="60" ry="20" fill="url(#koiGrad)"/>
+                        <path d="M 140 180 L 120 170 L 120 190 Z" fill="url(#koiGrad)"/>
+                        <circle cx="250" cy="175" r="5" fill="#000"/>
+                    </g>
+                    <g class="koi-fish" transform="translate(0,0)">
+                        <ellipse cx="380" cy="220" rx="55" ry="18" fill="#FFF"/>
+                        <path d="M 325 220 L 310 212 L 310 228 Z" fill="#FFF"/>
+                        <circle cx="425" cy="216" r="4" fill="#000"/>
+                    </g>
+                    <circle cx="150" cy="120" r="30" fill="#FFB6C1" opacity="0.4"/>
+                    <circle cx="450" cy="140" r="25" fill="#FFB6C1" opacity="0.4"/>
+                    <text x="300" y="350" font-size="20" text-anchor="middle" fill="#4682B4" opacity="0.8">Finding peace in your presence...</text>
+                </svg>
+            </div>
+            <button class="next-btn" onclick="nextScene(8)">Continue 🌊</button>
+        </div>
+    </div>
+
+    <!-- Scene 8: Neon City Romance -->
+    <div id="scene8" class="scene">
+        <div class="neon-city-scene"></div>
+        <canvas id="neonRainCanvas"></canvas>
+        <div class="content-center">
+            <h2 class="scene-title neon-glow">City Lights & You ✨</h2>
+            <div class="city-couple">
+                <svg viewBox="0 0 500 350" class="city-silhouette">
+                    <defs>
+                        <linearGradient id="cityGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF1493"/>
+                            <stop offset="100%" style="stop-color:#9370DB"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="50" y="200" width="60" height="150" fill="#1a1a2e"/>
+                    <rect x="150" y="150" width="70" height="200" fill="#1a1a2e"/>
+                    <rect x="260" y="180" width="55" height="170" fill="#1a1a2e"/>
+                    <rect x="350" y="160" width="65" height="190" fill="#1a1a2e"/>
+                    <rect x="60" y="210" width="8" height="12" fill="#FFD700"/>
+                    <rect x="75" y="210" width="8" height="12" fill="#FFD700"/>
+                    <rect x="160" y="170" width="10" height="15" fill="#FFD700"/>
+                    <rect x="180" y="170" width="10" height="15" fill="#FFD700"/>
+                    <g class="couple-city">
+                        <ellipse cx="220" cy="280" rx="25" ry="30" fill="url(#cityGrad)"/>
+                        <circle cx="220" cy="255" r="18" fill="url(#cityGrad)"/>
+                        <ellipse cx="280" cy="285" rx="28" ry="32" fill="url(#cityGrad)"/>
+                        <circle cx="280" cy="258" r="20" fill="url(#cityGrad)"/>
+                        <path d="M 245 275 L 255 275" stroke="#FF69B4" stroke-width="8"/>
+                    </g>
+                    <text x="250" y="340" font-size="18" text-anchor="middle" fill="#FF69B4">In a world of millions, I choose you...</text>
+                </svg>
+            </div>
+            <button class="next-btn" onclick="nextScene(9)">Next 🌃</button>
+        </div>
+    </div>
+
+    <!-- Scene 9: Dreamy Pastel Love -->
+    <div id="scene9" class="scene">
+        <div class="dreamy-clouds"></div>
+        <canvas id="cloudCanvas"></canvas>
+        <div class="content-center">
+            <h2 class="scene-title">Dreaming of Us ☁️</h2>
+            <div class="dream-sequence">
+                <div class="dream-bubble" data-delay="0">
+                    <p>💭 Your smile brightens my darkest days</p>
+                </div>
+                <div class="dream-bubble" data-delay="1">
+                    <p>💭 Your voice is my favorite melody</p>
+                </div>
+                <div class="dream-bubble" data-delay="2">
+                    <p>💭 Your presence brings me peace</p>
+                </div>
+                <div class="dream-bubble" data-delay="3">
+                    <p>💭 You are my greatest blessing</p>
+                </div>
+            </div>
+            <div class="angel-wings">
+                <svg viewBox="0 0 400 300" class="wings-svg">
+                    <defs>
+                        <radialGradient id="wingGrad">
+                            <stop offset="0%" style="stop-color:#FFF"/>
+                            <stop offset="100%" style="stop-color:#FFE4E1"/>
+                        </radialGradient>
+                    </defs>
+                    <path d="M 100 150 Q 50 100 80 50 Q 100 80 120 100 Q 100 120 100 150" fill="url(#wingGrad)" opacity="0.8"/>
+                    <path d="M 300 150 Q 350 100 320 50 Q 300 80 280 100 Q 300 120 300 150" fill="url(#wingGrad)" opacity="0.8"/>
+                    <circle cx="200" cy="150" r="40" fill="#FFB6C1"/>
+                    <circle cx="185" cy="145" r="5" fill="#000"/>
+                    <circle cx="215" cy="145" r="5" fill="#000"/>
+                    <path d="M 190 160 Q 200 168 210 160" stroke="#000" stroke-width="2" fill="none"/>
+                    <text x="200" y="240" font-size="16" text-anchor="middle" fill="#FF69B4">You're my angel 👼</text>
+                </svg>
+            </div>
+            <button class="next-btn" onclick="nextScene(10)">More Magic ✨</button>
+        </div>
+    </div>
+
+    <!-- Scene 10: Final Confession -->
+    <div id="scene10" class="scene">
+        <canvas id="particleCanvas"></canvas>
+        <div class="aurora-bg"></div>
+        <div class="content-center">
+            <div class="final-confession">
+                <h1 class="final-name">Qandeel</h1>
+                <div class="confession-content">
+                    <p class="confession-line" data-delay="0">You are the light that brightens my darkest days ✨</p>
+                    <p class="confession-line" data-delay="1">The warmth that melts away all my worries 🌟</p>
+                    <p class="confession-line" data-delay="2">The smile that makes everything worth it 😊</p>
+                    <p class="confession-line" data-delay="3">You are unique, precious, and irreplaceable 💎</p>
+                    <p class="confession-line" data-delay="4">Every moment thinking of you is a treasure 💝</p>
+                    <p class="confession-line" data-delay="5">You deserve all the love in this universe 🌌</p>
+                    <p class="confession-line" data-delay="6">This entire experience was created with love 🎨</p>
+                    <p class="confession-line" data-delay="7">With all my heart, care, and devotion 💗</p>
+                    <p class="confession-line" data-delay="8">Just for you... only for you... forever for you 💕</p>
+                </div>
+                
+                <!-- Subtle Hint (No Name Revealed) -->
+                <div class="mysterious-hint" style="margin-top:50px;padding:25px;background:rgba(255,255,255,0.05);backdrop-filter:blur(10px);border-radius:20px;border:2px solid rgba(255,255,255,0.1);animation:mysteryGlow 3s ease-in-out infinite;">
+                    <p style="font-size:clamp(1rem,3vw,1.2rem);color:var(--pink-light);line-height:1.8;font-style:italic;margin-bottom:15px;">
+                        "Jis ko main sab se zyada feel karta hoon..."
+                    </p>
+                    <p style="font-size:clamp(0.9rem,2.5vw,1.1rem);color:var(--pastel-pink);line-height:1.6;margin-bottom:15px;">
+                        Tumhare liye ek zindagi ki khoobsurat baat hai jo kehne se main darta hoon.
+                    </p>
+                    <p style="font-size:clamp(0.85rem,2vw,1rem);color:rgba(255,255,255,0.7);line-height:1.6;">
+                        Shayad mujhe dar hai tum door na ho jao... 💭
+                    </p>
+                    <div style="margin-top:20px;font-size:clamp(0.8rem,2vw,0.9rem);color:rgba(255,255,255,0.5);text-align:center;">
+                        (There's something hidden here... can you find it? 🔍)
+                    </div>
+                </div>
+                
+                <div class="final-couple-sticker" onclick="boopNose()">
+                    <svg viewBox="0 0 300 200" class="final-couple-svg">
+                        <ellipse cx="100" cy="100" rx="50" ry="55" fill="#FFB6C1"/>
+                        <circle cx="80" cy="40" r="28" fill="#FFB6C1"/>
+                        <circle cx="85" cy="90" r="7" fill="#000"/>
+                        <path d="M 80 110 Q 95 120 110 110" stroke="#000" stroke-width="3" fill="none"/>
+                        <ellipse cx="200" cy="100" rx="50" ry="55" fill="#DDA0DD"/>
+                        <circle cx="220" cy="40" r="28" fill="#DDA0DD"/>
+                        <circle cx="215" cy="90" r="7" fill="#000"/>
+                        <path d="M 190 110 Q 205 120 220 110" stroke="#000" stroke-width="3" fill="none"/>
+                        <path d="M 130 105 Q 150 95 170 105" stroke="#FF1493" stroke-width="5" fill="none"/>
+                        <path d="M 140 85 Q 150 75 160 85 Q 150 95 140 85" fill="#FF69B4"/>
+                        <circle cx="60" cy="105" r="15" fill="#FFB6C1" opacity="0.5"/>
+                        <circle cx="240" cy="105" r="15" fill="#DDA0DD" opacity="0.5"/>
+                    </svg>
+                    <p class="boop-hint">👉 Boop our noses! 👃</p>
+                </div>
+                <button class="reveal-btn" onclick="revealAllSecrets()">
+                    <span>Discover All Secrets 🎁</span>
+                </button>
+                
+                <!-- Secret Codes Hint -->
+                <div class="secret-codes-hint">
+                    <p class="hint-title">✨ Magic Words ✨</p>
+                    <p class="hint-subtitle">Type these words anywhere to unlock special effects:</p>
+                    <div class="codes-grid">
+                        <span class="code-badge">qandeel</span>
+                        <span class="code-badge">love</span>
+                        <span class="code-badge">beautiful</span>
+                        <span class="code-badge">smile</span>
+                        <span class="code-badge">angel</span>
+                        <span class="code-badge">star</span>
+                        <span class="code-badge">heart</span>
+                        <span class="code-badge">forever</span>
+                        <span class="code-badge">princess</span>
+                        <span class="code-badge">dream</span>
+                    </div>
+                    <p class="hint-note">💡 Just type any word - no need to press Enter!</p>
+                </div>
+            </div>
+        </div>
+        <div class="hidden-element hold-secret" onmousedown="startHold()" onmouseup="endHold()" ontouchstart="startHold()" ontouchend="endHold()">
+            <div class="hold-button">
+                <span>Hold Me 💕</span>
+                <div class="hold-progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secrets Panel -->
+    <div id="secretsPanel" class="secrets-overlay">
+        <div class="secrets-container">
+            <button class="close-btn" onclick="closeSecrets()">✕</button>
+            <h2 class="secrets-title">You Found All The Secrets! 🎉</h2>
+            <div class="secrets-list">
+                <div class="secret-card" id="secret1">
+                    <div class="secret-icon">💗</div>
+                    <p class="secret-text">Secret 1: You make my heart skip a beat every time</p>
+                </div>
+                <div class="secret-card" id="secret2">
+                    <div class="secret-icon">🦋</div>
+                    <p class="secret-text">Secret 2: Your presence is like a beautiful butterfly - delicate and mesmerizing</p>
+                </div>
+                <div class="secret-card" id="secret3">
+                    <div class="secret-icon">⭐</div>
+                    <p class="secret-text">Secret 3: You shine brighter than any star in the sky</p>
+                </div>
+                <div class="secret-card" id="secret4">
+                    <div class="secret-icon">🤗</div>
+                    <p class="secret-text">Secret 4: I want to hold you close and never let go</p>
+                </div>
+                <div class="secret-card" id="secret5">
+                    <div class="secret-icon">✨</div>
+                    <p class="secret-text">Secret 5: You are my greatest treasure, my most precious gift</p>
+                </div>
+                <div class="secret-card" id="secret6">
+                    <div class="secret-icon">📱</div>
+                    <p class="secret-text">Secret 6: Every moment with you is pure magic</p>
+                </div>
+                <div class="secret-card" id="secret7">
+                    <div class="secret-icon">💕</div>
+                    <p class="secret-text">Secret 7: You are loved beyond measure, beyond words, beyond infinity</p>
+                </div>
+            </div>
+            <div class="bonus-message">
+                <p>🎊 Bonus: Type "QANDEEL" anywhere to see something special! 🎊</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cute Jumpscare -->
+    <div id="cuteJumpscare" class="jumpscare-overlay">
+        <div class="jumpscare-content">
+            <svg viewBox="0 0 200 200" class="jumpscare-svg">
+                <circle cx="100" cy="100" r="80" fill="#FFB6C1"/>
+                <circle cx="70" cy="85" r="12" fill="#000"/>
+                <circle cx="130" cy="85" r="12" fill="#000"/>
+                <path d="M 60 120 Q 100 145 140 120" stroke="#000" stroke-width="5" fill="none"/>
+                <circle cx="40" cy="110" r="18" fill="#FF69B4" opacity="0.6"/>
+                <circle cx="160" cy="110" r="18" fill="#FF69B4" opacity="0.6"/>
+                <text x="100" y="40" font-size="24" text-anchor="middle" fill="#FF1493">Boo! 💕</text>
+                <path d="M 65 75 Q 60 70 65 65 M 135 75 Q 140 70 135 65" stroke="#FF69B4" stroke-width="3"/>
+            </svg>
+            <p class="jumpscare-text">Gotcha! 😊💗</p>
+            <p class="jumpscare-subtext">Just wanted to make you smile! ✨</p>
+        </div>
+    </div>
+
+    <!-- Boop Effect -->
+    <div id="boopEffect" class="boop-overlay">
+        <div class="boop-animation">
+            <span class="boop-emoji">👉👃</span>
+            <p class="boop-text">Boop! 💕</p>
+        </div>
+    </div>
+
+    <!-- Special Keyboard Effect -->
+    <div id="specialEffect" class="special-overlay">
+        <div class="special-content">
+            <h2 class="special-title">QANDEEL</h2>
+            <p class="special-message">The most beautiful name in my world 💗</p>
+            <div class="heart-explosion"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
