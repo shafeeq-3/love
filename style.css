@@ -3258,3 +3258,120 @@ button,
         margin-top: 30px;
     }
 }
+
+
+/* Mobile Keyboard Trigger */
+.mobile-keyboard-trigger {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10000;
+    background: rgba(255, 107, 157, 0.3);
+    backdrop-filter: blur(10px);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    animation: keyboardPulse 2s ease-in-out infinite;
+}
+
+.mobile-keyboard-trigger:hover {
+    transform: scale(1.1);
+    background: rgba(255, 107, 157, 0.5);
+    box-shadow: 0 0 30px rgba(255, 107, 157, 0.8);
+}
+
+.mobile-keyboard-trigger span {
+    font-size: 28px;
+}
+
+@keyframes keyboardPulse {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 40px rgba(255, 107, 157, 0.6);
+    }
+}
+
+/* Mobile Input Field */
+.mobile-input-field {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: 2px solid rgba(255, 107, 157, 0.5);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(255, 107, 157, 0.4);
+    z-index: 10001;
+    transition: bottom 0.4s ease;
+    outline: none;
+    color: #C71585;
+    font-family: 'Poppins', sans-serif;
+}
+
+.mobile-input-field:focus {
+    border-color: #FF1493;
+    box-shadow: 0 10px 50px rgba(255, 20, 147, 0.6);
+}
+
+.mobile-input-field.active {
+    bottom: 30px;
+}
+
+.mobile-input-field::placeholder {
+    color: rgba(199, 21, 133, 0.5);
+}
+
+/* Hide keyboard trigger on desktop (optional) */
+@media (min-width: 769px) {
+    .mobile-keyboard-trigger {
+        opacity: 0.5;
+    }
+    
+    .mobile-keyboard-trigger:hover {
+        opacity: 1;
+    }
+}
+
+/* Mobile specific */
+@media (max-width: 768px) {
+    .mobile-keyboard-trigger {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .mobile-keyboard-trigger span {
+        font-size: 26px;
+    }
+    
+    .mobile-input-field {
+        width: 85%;
+        padding: 12px 18px;
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+}
+
+@media (max-width: 480px) {
+    .mobile-keyboard-trigger {
+        width: 50px;
+        height: 50px;
+        top: 15px;
+        left: 15px;
+    }
+    
+    .mobile-keyboard-trigger span {
+        font-size: 24px;
+    }
+}

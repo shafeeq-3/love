@@ -3300,29 +3300,31 @@ console.log('%c🤫 Secret code activated... Good luck! 💗', 'color: #FF69B4; 
 // ========================================
 
 // Load YouTube IFrame API
-const tag = document.createElement('script');
-tag.src = 'https://www.youtube.com/iframe_api';
-const firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 let player;
 let musicReady = false;
+
+function loadYouTubeAPI() {
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+}
 
 // YouTube API Ready
 window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player('youtube-player', {
-        height: '0',
-        width: '0',
-        videoId: 'njmrj2X0fJQ', // Video ID from URL
+        height: '1',
+        width: '1',
+        videoId: 'njmrj2X0fJQ',
         playerVars: {
             autoplay: 1,
             loop: 1,
-            playlist: 'njmrj2X0fJQ', // Required for loop
+            playlist: 'njmrj2X0fJQ',
             controls: 0,
-            showinfo: 0,
+            disablekb: 1,
+            fs: 0,
             modestbranding: 1,
-            iv_load_policy: 3,
-            rel: 0
+            playsinline: 1
         },
         events: {
             onReady: onPlayerReady,
@@ -3333,21 +3335,26 @@ window.onYouTubeIframeAPIReady = function() {
 
 function onPlayerReady(event) {
     musicReady = true;
-    // Try to play (may be blocked by browser)
-    event.target.playVideo();
-    event.target.setVolume(30); // Set volume to 30%
+    event.target.setVolume(25);
+    // Auto-play will be triggered on first interaction
 }
 
 function onPlayerStateChange(event) {
-    // If video ends, replay (backup for loop)
     if (event.data === YT.PlayerState.ENDED) {
         player.playVideo();
     }
+    if (event.data === YT.PlayerState.PLAYING) {
+        musicPlaying = true;
+        const icon = document.getElementById('music-icon');
+        if (icon) icon.textContent = '🎵';
+    }
 }
 
-// Update music toggle to work with YouTube player
-const originalToggleMusic = toggleMusic;
-toggleMusic = function() {
+// Load API on page load
+loadYouTubeAPI();
+
+// Update music toggle
+function toggleMusic() {
     if (player && musicReady) {
         if (musicPlaying) {
             player.pauseVideo();
@@ -3359,24 +3366,139 @@ toggleMusic = function() {
             musicPlaying = true;
         }
     }
-};
+}
 
-// Auto-play on first user interaction (browser requirement)
+// Auto-play on first interaction
 let firstInteraction = false;
-const enableMusic = () => {
-    if (!firstInteraction && player && musicReady) {
-        player.playVideo();
-        musicPlaying = true;
-        document.getElementById('music-icon').textContent = '🎵';
+function enableMusicOnInteraction() {
+    if (!firstInteraction) {
         firstInteraction = true;
+        setTimeout(() => {
+            if (player && player.playVideo) {
+                player.playVideo();
+                musicPlaying = true;
+                const icon = document.getElementById('music-icon');
+                if (icon) icon.textContent = '🎵';
+            }
+        }, 1000);
     }
-};
+}
 
 // Listen for first interaction
 ['click', 'touchstart', 'keydown'].forEach(event => {
-    document.addEventListener(event, enableMusic, { once: true });
+    document.addEventListener(event, enableMusicOnInteraction, { once: true, passive: true });
 });
 
 console.log('%c🎵 BACKGROUND MUSIC LOADED! 🎵', 'color: #FF6B9D; font-size: 16px; font-weight: bold;');
 console.log('%cSong: https://youtu.be/njmrj2X0fJQ', 'color: #FFB6C1; font-size: 12px;');
 console.log('%cClick music icon (🎵) to toggle', 'color: #FFB6C1; font-size: 12px;');
+
+
+// ========================================
+// MOBILE KEYBOARD INPUT
+// For typing secret codes on mobile
+// ========================================
+
+function openMobileKeyboard() {
+    const input = document.getElementById('mobileInput');
+    if (input) {
+        input.classList.add('active');
+        input.focus();
+        
+        // Vibrate on open
+        if (navigator.vibrate) {
+            navigator.vibrate(30);
+        }
+    }
+}
+
+// Handle mobile input
+const mobileInput = document.getElementById('mobileInput');
+if (mobileInput) {
+    // Track typing in mobile input
+    mobileInput.addEventListener('input', function(e) {
+        const value = this.value.toLowerCase();
+        
+        // Check if any secret code is typed
+        Object.keys(secretCodes).forEach(code => {
+            if (value.includes(code)) {
+                // Trigger the secret code
+                triggerSecretCode(code);
+                
+                // Clear input
+                this.value = '';
+                
+                // Hide input field
+                this.classList.remove('active');
+                this.blur();
+            }
+        });
+        
+        // Also check hidden codes
+        Object.keys(hiddenCodes).forEach(code => {
+            if (value.includes(code)) {
+                createHeartBurst();
+                createSparkleEffect();
+                this.value = '';
+                this.classList.remove('active');
+                this.blur();
+            }
+        });
+        
+        // Auto-hide if too long
+        if (value.length > 20) {
+            this.value = '';
+        }
+    });
+    
+    // Hide on blur
+    mobileInput.addEventListener('blur', function() {
+        setTimeout(() => {
+            this.classList.remove('active');
+        }, 300);
+    });
+    
+    // Close on Enter key
+    mobileInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') {
+            this.classList.remove('active');
+            this.blur();
+        }
+    });
+}
+
+// Add hint text that appears occasionally
+function showKeyboardHint() {
+    const hint = document.createElement('div');
+    hint.textContent = '💡 Tap ⌨️ to type secret codes!';
+    hint.style.cssText = 'position:fixed;top:90px;left:20px;background:rgba(255,107,157,0.9);color:white;padding:10px 20px;border-radius:20px;font-size:0.9rem;z-index:9999;animation:hintSlideIn 0.5s ease;box-shadow:0 5px 20px rgba(255,107,157,0.4);';
+    document.body.appendChild(hint);
+    
+    setTimeout(() => {
+        hint.style.animation = 'hintSlideOut 0.5s ease';
+        setTimeout(() => hint.remove(), 500);
+    }, 4000);
+}
+
+const hintSlideStyles = document.createElement('style');
+hintSlideStyles.textContent = `
+    @keyframes hintSlideIn {
+        from { transform: translateX(-150px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    @keyframes hintSlideOut {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(-150px); opacity: 0; }
+    }
+`;
+document.head.appendChild(hintSlideStyles);
+
+// Show hint after 15 seconds on mobile
+if (isMobile()) {
+    setTimeout(() => {
+        showKeyboardHint();
+    }, 15000);
+}
+
+console.log('%c⌨️ MOBILE KEYBOARD ADDED! ⌨️', 'color: #FF6B9D; font-size: 16px; font-weight: bold;');
+console.log('%cTap the keyboard icon (⌨️) to type!', 'color: #FFB6C1; font-size: 12px;');

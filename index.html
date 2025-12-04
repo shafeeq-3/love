@@ -16,13 +16,14 @@
     <div class="music-toggle" onclick="toggleMusic()">
         <span id="music-icon">🎵</span>
     </div>
-    <!-- Background Music - Auto Play -->
-    <audio id="bgMusic" loop autoplay>
-        <source src="https://www.youtube.com/watch?v=njmrj2X0fJQ" type="audio/mpeg">
-    </audio>
     
-    <!-- YouTube Player (Hidden) -->
-    <div id="youtube-player" style="display:none;"></div>
+    <!-- Mobile Keyboard Input (Hidden but functional) -->
+    <div class="mobile-keyboard-trigger" onclick="openMobileKeyboard()">
+        <span>⌨️</span>
+    </div>
+    <input type="text" id="mobileInput" class="mobile-input-field" placeholder="Type here..." />
+    <!-- YouTube Player (Hidden but functional) -->
+    <div id="youtube-player" style="position:fixed;bottom:-200px;left:-200px;width:1px;height:1px;opacity:0;pointer-events:none;"></div>
 
     <!-- Preloader with Animation -->
     <div id="preloader" class="scene active">
@@ -397,12 +398,11 @@
             </div>
             <button class="next-btn" onclick="nextScene(7)">Almost There 💫</button>
         </div>
-        <div class="hidden-element shake-secret" onclick="unlockSecret(6)">
+        <!-- <div class="hidden-element shake-secret" onclick="unlockSecret(6)">
             <div class="shake-indicator">
-                <p>📱 Shake me!</p>
                 <div class="shake-icon">📳</div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Scene 7: Koi Pond Reflection -->
