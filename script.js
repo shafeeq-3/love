@@ -3296,7 +3296,7 @@ console.log('%c🤫 Secret code activated... Good luck! 💗', 'color: #FF69B4; 
 
 // ========================================
 // BACKGROUND MUSIC - AUTO PLAY
-// YouTube: https://youtu.be/njmrj2X0fJQ
+// YouTube: https://youtu.be/D0gWr9K8Lb4
 // ========================================
 
 // Load YouTube IFrame API
@@ -3315,11 +3315,11 @@ window.onYouTubeIframeAPIReady = function() {
     player = new YT.Player('youtube-player', {
         height: '1',
         width: '1',
-        videoId: 'njmrj2X0fJQ',
+        videoId: 'D0gWr9K8Lb4',
         playerVars: {
             autoplay: 1,
             loop: 1,
-            playlist: 'njmrj2X0fJQ',
+            playlist: 'D0gWr9K8Lb4',
             controls: 0,
             disablekb: 1,
             fs: 0,
