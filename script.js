@@ -4023,3 +4023,135 @@ nextScene = function(sceneNum) {
     existingNextScene(sceneNum);
     initNewScenes(sceneNum);
 };
+
+
+// ========================================
+// SCENE 16: VIRTUAL GIFTS
+// ========================================
+
+let openedGifts = new Set();
+
+function initScene16() {
+    createGiftsBackground();
+}
+
+function createGiftsBackground() {
+    const canvas = document.getElementById('giftsCanvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const sparkles = [];
+    
+    // Create floating sparkles
+    for (let i = 0; i < 50; i++) {
+        sparkles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 3 + 1,
+            speed: Math.random() * 0.5 + 0.2,
+            alpha: Math.random() * 0.5 + 0.3,
+            emoji: ['✨', '💫', '⭐', '🌟'][Math.floor(Math.random() * 4)]
+        });
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        sparkles.forEach((sparkle) => {
+            sparkle.y -= sparkle.speed;
+            
+            if (sparkle.y < -20) {
+                sparkle.y = canvas.height + 20;
+                sparkle.x = Math.random() * canvas.width;
+            }
+            
+            ctx.globalAlpha = sparkle.alpha;
+            ctx.font = `${sparkle.size * 8}px Arial`;
+            ctx.fillText(sparkle.emoji, sparkle.x, sparkle.y);
+        });
+        
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(animate);
+    }
+    animate();
+}
+
+function openGift(giftNumber) {
+    if (openedGifts.has(giftNumber)) return;
+    
+    const giftBox = document.getElementById(`gift${giftNumber}`);
+    const wrapper = giftBox.querySelector('.gift-wrapper');
+    const content = giftBox.querySelector('.gift-content');
+    
+    // Add opening animation
+    wrapper.style.animation = 'giftOpen 1s ease forwards';
+    
+    setTimeout(() => {
+        wrapper.style.display = 'none';
+        content.style.display = 'block';
+        content.style.animation = 'giftReveal 1s ease forwards';
+        
+        // Create celebration effect
+        createGiftCelebration(giftBox);
+        
+        openedGifts.add(giftNumber);
+        
+        if (navigator.vibrate) {
+            navigator.vibrate([50, 100, 50]);
+        }
+    }, 1000);
+}
+
+function createGiftCelebration(giftBox) {
+    const rect = giftBox.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const emojis = ['🎉', '✨', '💫', '⭐', '💝', '💕', '🌟'];
+    
+    for (let i = 0; i < 20; i++) {
+        setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            particle.style.cssText = `
+                position: fixed;
+                left: ${centerX}px;
+                top: ${centerY}px;
+                font-size: 2rem;
+                pointer-events: none;
+                z-index: 10000;
+            `;
+            
+            const angle = (Math.PI * 2 * i) / 20;
+            const distance = 150;
+            const tx = Math.cos(angle) * distance;
+            const ty = Math.sin(angle) * distance;
+            
+            particle.style.animation = `giftExplode${i} 1.5s ease-out forwards`;
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes giftExplode${i} {
+                    0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+                    100% { transform: translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1.5); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            document.body.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+                style.remove();
+            }, 1500);
+        }, i * 30);
+    }
+}
+
+// Update scene initialization
+const originalInitNewScenes = initNewScenes;
+initNewScenes = function(sceneNum) {
+    originalInitNewScenes(sceneNum);
+    if (sceneNum === 16) initScene16();
+};

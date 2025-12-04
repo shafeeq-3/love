@@ -848,9 +848,225 @@
                 <p class="romantic-quote">"Waise hi tum meri zindagi roshan karti ho 💙"</p>
                 <p class="romantic-quote">"Tum mere liye ek khaas tohfa ho ✨"</p>
             </div>
-            <button class="next-btn" onclick="nextScene(10)" style="background:linear-gradient(135deg,#00CED1,#FF6B9D);">
-                Return to Journey 💫
+            <button class="next-btn" onclick="nextScene(16)" style="background:linear-gradient(135deg,#00CED1,#FF6B9D);">
+                Continue to Gifts 🎁
             </button>
+        </div>
+    </div>
+
+    <!-- Scene 16: Virtual Gifts -->
+    <div id="scene16" class="scene">
+        <canvas id="giftsCanvas"></canvas>
+        <div class="gifts-bg"></div>
+        <div class="content-center">
+            <h2 class="scene-title" style="color:#FFD700;text-shadow:0 0 30px rgba(255,215,0,0.8);">Gifts For You, Qandeel 🎁</h2>
+            <div class="gifts-intro">
+                <p class="gift-intro-text">Tumhare liye kuch khaas tohfe...</p>
+                <p class="gift-intro-text">Har tohfa mere dil ki baat kehta hai 💝</p>
+                <p class="gift-intro-text">Click karke kholo aur dekho kya hai andar ✨</p>
+            </div>
+            
+            <div class="gifts-grid">
+                <!-- Gift 1: Flowers -->
+                <div class="gift-box" id="gift1" onclick="openGift(1)">
+                    <div class="gift-wrapper">
+                        <div class="gift-bow">🎀</div>
+                        <div class="gift-body">
+                            <div class="gift-icon">🎁</div>
+                            <p class="gift-label">Gift 1</p>
+                        </div>
+                    </div>
+                    <div class="gift-content" style="display:none;">
+                        <div class="gift-reveal">
+                            <div class="flower-bouquet">
+                                <span class="flower">🌹</span>
+                                <span class="flower">🌹</span>
+                                <span class="flower">🌹</span>
+                                <span class="flower">🌺</span>
+                                <span class="flower">🌸</span>
+                                <span class="flower">🌷</span>
+                                <span class="flower">💐</span>
+                            </div>
+                            <h3 class="gift-title">Phoolon Ka Tohfa 💐</h3>
+                            <p class="gift-message">Yeh phool tumhari muskurahat jitne khoobsurat hain...</p>
+                            <p class="gift-message">Har phool tumhari ek khoobi ko represent karta hai 🌸</p>
+                            <p class="gift-message">Tum mere liye sabse khaas ho! 💕</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift 2: Love Letter -->
+                <div class="gift-box" id="gift2" onclick="openGift(2)">
+                    <div class="gift-wrapper">
+                        <div class="gift-bow">🎀</div>
+                        <div class="gift-body">
+                            <div class="gift-icon">🎁</div>
+                            <p class="gift-label">Gift 2</p>
+                        </div>
+                    </div>
+                    <div class="gift-content" style="display:none;">
+                        <div class="gift-reveal">
+                            <div class="love-letter">
+                                <div class="letter-icon">💌</div>
+                                <div class="letter-paper">
+                                    <h3 class="letter-heading">Mere Dil Ki Baat...</h3>
+                                    <p class="letter-text">Qandeel,</p>
+                                    <p class="letter-text">Tumse milne ke baad meri zindagi mein rang aa gaye...</p>
+                                    <p class="letter-text">Tumhari baatein, tumhari hansi, tumhari muskurahat - sab kuch perfect hai.</p>
+                                    <p class="letter-text">Tum mere liye bohot ahmiyat rakhti ho.</p>
+                                    <p class="letter-text">Tumhare saath har pal khaas lagta hai. 💗</p>
+                                    <p class="letter-signature">- Tumhara</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift 3: Poem -->
+                <div class="gift-box" id="gift3" onclick="openGift(3)">
+                    <div class="gift-wrapper">
+                        <div class="gift-bow">🎀</div>
+                        <div class="gift-body">
+                            <div class="gift-icon">🎁</div>
+                            <p class="gift-label">Gift 3</p>
+                        </div>
+                    </div>
+                    <div class="gift-content" style="display:none;">
+                        <div class="gift-reveal">
+                            <div class="poem-scroll">
+                                <div class="scroll-icon">📜</div>
+                                <h3 class="poem-title">Tumhare Liye Shayari ✨</h3>
+                                <div class="poem-verses">
+                                    <p class="verse">Tumhari muskurahat se roshan hai meri duniya,</p>
+                                    <p class="verse">Tumhari baaton mein hai sukoon ka dariya... 🌊</p>
+                                    <p class="verse-break">• • •</p>
+                                    <p class="verse">Tumhari aankhon mein hai gehraai samundar si,</p>
+                                    <p class="verse">Tumhari hansi hai meri favorite awaaz si... 🎵</p>
+                                    <p class="verse-break">• • •</p>
+                                    <p class="verse">Tum ho toh sab kuch hai mere paas,</p>
+                                    <p class="verse">Tum ho mere liye bohot khaas... 💫</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift 4: Compliments -->
+                <div class="gift-box" id="gift4" onclick="openGift(4)">
+                    <div class="gift-wrapper">
+                        <div class="gift-bow">🎀</div>
+                        <div class="gift-body">
+                            <div class="gift-icon">🎁</div>
+                            <p class="gift-label">Gift 4</p>
+                        </div>
+                    </div>
+                    <div class="gift-content" style="display:none;">
+                        <div class="gift-reveal">
+                            <div class="compliments-jar">
+                                <div class="jar-icon">🏺</div>
+                                <h3 class="jar-title">Compliments Jar ✨</h3>
+                                <div class="compliments-list">
+                                    <div class="compliment-note">💝 Tumhari smile duniya ki sabse khoobsurat cheez hai</div>
+                                    <div class="compliment-note">✨ Tumhari personality bohot attractive hai</div>
+                                    <div class="compliment-note">🌟 Tumhari samajhdari mujhe impress karti hai</div>
+                                    <div class="compliment-note">💕 Tumhari care mujhe special feel karati hai</div>
+                                    <div class="compliment-note">🌸 Tumhari simplicity tumhe aur bhi khoobsurat banati hai</div>
+                                    <div class="compliment-note">💫 Tumhari baatein dil ko sukoon deti hain</div>
+                                    <div class="compliment-note">🎀 Tumhari sharmana bohot cute hai</div>
+                                    <div class="compliment-note">💗 Tum exactly waise ho jaise main chahta tha</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift 5: Memories -->
+                <div class="gift-box" id="gift5" onclick="openGift(5)">
+                    <div class="gift-wrapper">
+                        <div class="gift-bow">🎀</div>
+                        <div class="gift-body">
+                            <div class="gift-icon">🎁</div>
+                            <p class="gift-label">Gift 5</p>
+                        </div>
+                    </div>
+                    <div class="gift-content" style="display:none;">
+                        <div class="gift-reveal">
+                            <div class="memory-box">
+                                <div class="memory-icon">📸</div>
+                                <h3 class="memory-title">Khaas Yaadein 💭</h3>
+                                <div class="memories-list">
+                                    <div class="memory-item">
+                                        <span class="memory-emoji">✨</span>
+                                        <p>Pehli baar jab tumse baat hui...</p>
+                                    </div>
+                                    <div class="memory-item">
+                                        <span class="memory-emoji">💫</span>
+                                        <p>Tumhari muskurahat dekh kar dil khush ho gaya...</p>
+                                    </div>
+                                    <div class="memory-item">
+                                        <span class="memory-emoji">🌟</span>
+                                        <p>Tumhari har baat yaad hai mujhe...</p>
+                                    </div>
+                                    <div class="memory-item">
+                                        <span class="memory-emoji">💗</span>
+                                        <p>Har lamha tumhare saath khaas hai...</p>
+                                    </div>
+                                    <div class="memory-item">
+                                        <span class="memory-emoji">🌸</span>
+                                        <p>Yeh yaadein hamesha dil mein raheingi...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gift 6: Future Dreams -->
+                <div class="gift-box" id="gift6" onclick="openGift(6)">
+                    <div class="gift-wrapper">
+                        <div class="gift-bow">🎀</div>
+                        <div class="gift-body">
+                            <div class="gift-icon">🎁</div>
+                            <p class="gift-label">Gift 6</p>
+                        </div>
+                    </div>
+                    <div class="gift-content" style="display:none;">
+                        <div class="gift-reveal">
+                            <div class="dreams-scroll">
+                                <div class="dream-icon">🌙</div>
+                                <h3 class="dream-title">Humari Future Dreams 💫</h3>
+                                <div class="dreams-list">
+                                    <div class="dream-card">
+                                        <span class="dream-emoji">🏡</span>
+                                        <p>Ek khoobsurat ghar jahan sirf khushiyan hon...</p>
+                                    </div>
+                                    <div class="dream-card">
+                                        <span class="dream-emoji">🌍</span>
+                                        <p>Saath mein duniya dekhna...</p>
+                                    </div>
+                                    <div class="dream-card">
+                                        <span class="dream-emoji">☕</span>
+                                        <p>Subah ki chai tumhare saath...</p>
+                                    </div>
+                                    <div class="dream-card">
+                                        <span class="dream-emoji">🌅</span>
+                                        <p>Har sunset tumhare saath dekhna...</p>
+                                    </div>
+                                    <div class="dream-card">
+                                        <span class="dream-emoji">💕</span>
+                                        <p>Hamesha tumhara saath dena...</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gifts-footer">
+                <p class="footer-message">Har tohfa mere dil se hai tumhare liye 💝</p>
+                <button class="next-btn" onclick="nextScene(10)">Return to Journey 💫</button>
+            </div>
         </div>
     </div>
 
